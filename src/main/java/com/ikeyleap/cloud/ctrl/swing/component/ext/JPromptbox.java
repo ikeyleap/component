@@ -112,7 +112,7 @@ public class JPromptbox extends JComponent implements Promptbox {
 	private void showDialog() {
 		dialog = new JDialog();
 		dialog.setTitle("ceshi");
-		dialog.setSize(600, 400);
+		dialog.setSize(400, 300);
 		dialog.setResizable(false);
 		dialog.setLocationRelativeTo(null);
 		dialog.setModal(true);
