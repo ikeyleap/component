@@ -28,6 +28,16 @@ import com.ikeyleap.ctrl.component.ext.RowHeaderTable;
 import com.ikeyleap.ctrl.component.util.IconUtil;
 
 import javax.swing.ImageIcon;
+import javax.swing.border.EmptyBorder;
+import javax.swing.border.BevelBorder;
+import javax.swing.border.CompoundBorder;
+import javax.swing.border.EtchedBorder;
+import javax.swing.border.LineBorder;
+import java.awt.Color;
+import javax.swing.border.MatteBorder;
+import javax.swing.border.SoftBevelBorder;
+import javax.swing.border.TitledBorder;
+import javax.swing.UIManager;
 
 public class ShowTable extends JDialog {
 
@@ -164,6 +174,8 @@ public class ShowTable extends JDialog {
 		getContentPane().add(toolBar, BorderLayout.NORTH);
 
 		JButton btnFilerButton = new JButton("");
+		btnFilerButton.setBackground(UIManager.getColor("Button.background"));
+		btnFilerButton.setToolTipText("过滤");
 		btnFilerButton.setIcon(IconUtil.scale(new ImageIcon(ShowTable.class.getResource("/com/ikeyleap/ctrl/component/graphics/filter-tool-black-shape.png")), 16, 16));
 		btnFilerButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -186,7 +198,9 @@ public class ShowTable extends JDialog {
 
 	private void bindTable() {
 		jTableBinding.bind();
-		scrollPane.setRowHeaderView(new RowHeaderTable(table, 40));
+		RowHeaderTable rowHeaderTable = new RowHeaderTable(table, 40);
+		rowHeaderTable.setBorder(new SoftBevelBorder(BevelBorder.LOWERED, null, null, null, null));
+		scrollPane.setRowHeaderView(rowHeaderTable);
 	}
 
 	private void refreshTable() {
