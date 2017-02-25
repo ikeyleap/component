@@ -10,12 +10,16 @@ import java.beans.IntrospectionException;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JToolBar;
+import javax.swing.UIManager;
+import javax.swing.border.BevelBorder;
+import javax.swing.border.SoftBevelBorder;
 import javax.swing.table.DefaultTableModel;
 
 import org.jdesktop.beansbinding.AutoBinding.UpdateStrategy;
@@ -26,18 +30,6 @@ import org.jdesktop.swingbinding.SwingBindings;
 import com.ikeyleap.cloud.ctrl.swing.component.ext.util.DataBindingUtil;
 import com.ikeyleap.ctrl.component.ext.RowHeaderTable;
 import com.ikeyleap.ctrl.component.util.IconUtil;
-
-import javax.swing.ImageIcon;
-import javax.swing.border.EmptyBorder;
-import javax.swing.border.BevelBorder;
-import javax.swing.border.CompoundBorder;
-import javax.swing.border.EtchedBorder;
-import javax.swing.border.LineBorder;
-import java.awt.Color;
-import javax.swing.border.MatteBorder;
-import javax.swing.border.SoftBevelBorder;
-import javax.swing.border.TitledBorder;
-import javax.swing.UIManager;
 
 public class ShowTable extends JDialog {
 
