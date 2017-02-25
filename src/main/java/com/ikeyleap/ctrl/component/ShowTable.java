@@ -18,9 +18,11 @@ import javax.swing.JTable;
 import javax.swing.JToolBar;
 import javax.swing.table.DefaultTableModel;
 
+import org.jdesktop.beansbinding.AutoBinding.UpdateStrategy;
 import org.jdesktop.beansbinding.BeanProperty;
+import org.jdesktop.swingbinding.JTableBinding;
+import org.jdesktop.swingbinding.SwingBindings;
 
-import com.ikeyleap.cloud.ctrl.swing.component.ext.bean.Person;
 import com.ikeyleap.cloud.ctrl.swing.component.ext.util.DataBindingUtil;
 import com.ikeyleap.ctrl.component.ext.RowHeaderTable;
 
@@ -34,10 +36,33 @@ public class ShowTable extends JDialog {
 	public JTable table;
 	public JScrollPane scrollPane;
 
-	public List<Person> persons = new ArrayList<Person>();
+	@SuppressWarnings("rawtypes")
+	public List dataList = new ArrayList();
 
 	private JPromptbox parent;
+	@SuppressWarnings("rawtypes")
+	private JTableBinding jTableBinding;
 	public BeanProperty<JTable, Object> jTableBeanProperty;
+	
+	@SuppressWarnings("rawtypes")
+	private Class clazz;
+
+	/**
+	 * @return the dataList
+	 */
+	@SuppressWarnings("rawtypes")
+	public List getDataList() {
+		return dataList;
+	}
+
+	/**
+	 * @param dataList
+	 *            the dataList to set
+	 */
+	@SuppressWarnings("rawtypes")
+	public void setDataList(List dataList) {
+		this.dataList = dataList;
+	}
 
 	/**
 	 * Launch the application.
@@ -66,7 +91,23 @@ public class ShowTable extends JDialog {
 		parent = _parent;
 		initialize();
 	}
+	
+	@SuppressWarnings("rawtypes")
+	public ShowTable(List dataList, JPromptbox _parent) {
+		parent = _parent;
+		this.dataList = dataList;
+		initialize();
+	}
+	
+	@SuppressWarnings("rawtypes")
+	public ShowTable(List dataList,Class clazz, JPromptbox _parent) {
+		this.clazz = clazz;
+		parent = _parent;
+		this.dataList = dataList;
+		initialize();
+	}
 
+	@SuppressWarnings("unchecked")
 	private void initialize() {
 		setBounds(100, 100, 450, 300);
 		getContentPane().setLayout(new BorderLayout());
@@ -120,22 +161,36 @@ public class ShowTable extends JDialog {
 		getContentPane().add(toolBar, BorderLayout.NORTH);
 
 		JButton btnNewButton = new JButton("New button");
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+//				dataList.add(new Person("AndeySablin", "sablin@nospam.com", "098765", "", "aaa-vvv-ddd"));
+//				dataList.add(new Person("Mikaylor", "taylor@instantiations.com", "503-598-4900", "", ""));
+//				dataList.add(new Person("Eriayberg", "clayberg@instantiations.com", "+1 (503) 598-4900", "", ""));
+//				dataList.add(new Person("Danubel", "dan@instantiations.com", "503-598-4900", "", ""));
+				refreshTable();
+			}
+		});
 		toolBar.add(btnNewButton);
 
-		persons.add(new Person("Konstantin Scheglov", "kosta@nospam.com", "1234567890", "", ""));
-		persons.add(new Person("Alexander Mitin", "mitin@nospam.com", "", "0987654321", ""));
-		persons.add(new Person("Alexander Lobas", "lobas@nospam.com", "", "", "111-222-333-00"));
-		persons.add(new Person("Andey Sablin", "sablin@nospam.com", "098765", "", "aaa-vvv-ddd"));
-		persons.add(new Person("Mike Taylor", "taylor@instantiations.com", "503-598-4900", "", ""));
-		persons.add(new Person("Eric Clayberg", "clayberg@instantiations.com", "+1 (503) 598-4900", "", ""));
-		persons.add(new Person("Dan Rubel", "dan@instantiations.com", "503-598-4900", "", ""));
-
 		try {
-			DataBindingUtil.initDataBindings(persons, Person.class, table);
+			jTableBinding = SwingBindings.createJTableBinding(UpdateStrategy.READ, dataList, table);
+			DataBindingUtil.initDataBindings(clazz, jTableBinding);
+			jTableBinding.setEditable(false);
+			bindTable();
 			jTableBeanProperty = BeanProperty.create("selectedElement");
 		} catch (IntrospectionException e) {
 			e.printStackTrace();
 		}
+	}
+
+
+	private void bindTable() {
+		jTableBinding.bind();
 		scrollPane.setRowHeaderView(new RowHeaderTable(table, 40));
+	}
+
+	private void refreshTable() {
+		jTableBinding.unbind();
+		bindTable();
 	}
 }

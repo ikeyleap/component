@@ -7,6 +7,8 @@ import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
 import java.text.MessageFormat;
 import java.text.ParseException;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.swing.JButton;
 import javax.swing.JComponent;
@@ -34,9 +36,45 @@ public class JPromptbox extends JComponent implements Promptbox {
 
 	private Object selectedElement;
 
+	@SuppressWarnings("rawtypes")
+	private Class clazz;
+
+	@SuppressWarnings("rawtypes")
+	public List dataList = new ArrayList();
+
+	/**
+	 * @return the dataList
+	 */
+	@SuppressWarnings("rawtypes")
+	public List getDataList() {
+		return dataList;
+	}
+
+	/**
+	 * @param dataList
+	 *            the dataList to set
+	 */
+	@SuppressWarnings("rawtypes")
+	public void setDataList(List dataList) {
+		this.dataList = dataList;
+	}
+
 	private PropertyChangeSupport changeSupport = new PropertyChangeSupport(this);
 
 	public JPromptbox() {
+		initialize();
+	}
+
+	@SuppressWarnings("rawtypes")
+	public JPromptbox(List dataList) {
+		this.dataList = dataList;
+		initialize();
+	}
+	
+	@SuppressWarnings("rawtypes")
+	public JPromptbox(List dataList, Class clazz) {
+		this.clazz = clazz;
+		this.dataList = dataList;
 		initialize();
 	}
 
@@ -73,7 +111,7 @@ public class JPromptbox extends JComponent implements Promptbox {
 	}
 
 	private void showDialog() {
-		dialog = new ShowTable(this);
+		dialog = new ShowTable(dataList, clazz, this);
 		dialog.setTitle("请选择。。。");
 		dialog.setSize(500, 350);
 		dialog.setResizable(false);

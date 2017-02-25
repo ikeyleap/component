@@ -8,19 +8,17 @@ import java.util.List;
 
 import javax.swing.JTable;
 
-import org.jdesktop.beansbinding.BeanProperty;
 import org.jdesktop.beansbinding.AutoBinding.UpdateStrategy;
+import org.jdesktop.beansbinding.BeanProperty;
 import org.jdesktop.swingbinding.JTableBinding;
 import org.jdesktop.swingbinding.SwingBindings;
-
-import com.ikeyleap.cloud.ctrl.swing.component.ext.bean.Person;
 
 public class DataBindingUtil {
 
 	@SuppressWarnings({ "unchecked", "rawtypes" })
 	public static void initDataBindings(List list, Class clazz, JTable table) throws IntrospectionException {
 		JTableBinding jTableBinding = SwingBindings.createJTableBinding(UpdateStrategy.READ, list, table);
-		PropertyDescriptor[] props = getProps(Person.class);
+		PropertyDescriptor[] props = getProps(clazz);
 		for (PropertyDescriptor pd : props) {
 			if (!"class".equals(pd.getName())) {
 				jTableBinding.addColumnBinding(BeanProperty.create(pd.getName())).setColumnName(pd.getName())
@@ -29,6 +27,17 @@ public class DataBindingUtil {
 		}
 		jTableBinding.setEditable(false);
 		jTableBinding.bind();
+	}
+
+	@SuppressWarnings({ "unchecked", "rawtypes" })
+	public static void initDataBindings(Class clazz, JTableBinding jTableBinding) throws IntrospectionException {
+		PropertyDescriptor[] props = getProps(clazz);
+		for (PropertyDescriptor pd : props) {
+			if (!"class".equals(pd.getName())) {
+				jTableBinding.addColumnBinding(BeanProperty.create(pd.getName())).setColumnName(pd.getName())
+						.setEditable(false);
+			}
+		}
 	}
 
 	@SuppressWarnings("rawtypes")
