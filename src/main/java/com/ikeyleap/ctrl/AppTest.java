@@ -3,7 +3,6 @@ package com.ikeyleap.ctrl;
 import java.awt.EventQueue;
 import java.awt.FlowLayout;
 
-import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
@@ -12,6 +11,10 @@ import com.ikeyleap.ctrl.component.JPromptbox;
 
 public class AppTest extends JFrame {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -8440626069723637685L;
 	private JPanel contentPane;
 	private JPromptbox promptbox;
 	

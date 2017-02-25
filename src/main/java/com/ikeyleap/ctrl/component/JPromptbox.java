@@ -5,6 +5,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
+import java.text.MessageFormat;
 import java.text.ParseException;
 
 import javax.swing.JButton;
@@ -74,7 +75,7 @@ public class JPromptbox extends JComponent implements Promptbox {
 	private void showDialog() {
 		dialog = new ShowTable(this);
 		dialog.setTitle("请选择。。。");
-		dialog.setSize(400, 300);
+		dialog.setSize(500, 350);
 		dialog.setResizable(false);
 		dialog.setLocationRelativeTo(null);
 		dialog.setModal(true);
@@ -88,7 +89,8 @@ public class JPromptbox extends JComponent implements Promptbox {
 
 		// Create and Add Components
 		// Add and Configure TextField
-		formattedTextField = new JFormattedTextField(new PromptBoxFormatter("name"));
+		PromptBoxFormatter pbf = new PromptBoxFormatter("{0}的邮箱是{1}", "name,email");
+		formattedTextField = new JFormattedTextField(pbf);
 		formattedTextField.setEditable(false);
 		add(formattedTextField);
 		layout.putConstraint(SpringLayout.WEST, formattedTextField, 0, SpringLayout.WEST, this);
@@ -112,7 +114,7 @@ public class JPromptbox extends JComponent implements Promptbox {
 		int h = (int) button.getPreferredSize().getHeight();
 		int w = (int) 300;
 		button.setPreferredSize(new Dimension(h, h));
-		formattedTextField.setPreferredSize(new Dimension(w - h - 1, h));
+		formattedTextField.setPreferredSize(new Dimension(w - h, h));
 		initDataBindings();
 	}
 
@@ -135,24 +137,33 @@ public class JPromptbox extends JComponent implements Promptbox {
 
 	private class PromptBoxFormatter extends DefaultFormatter {
 
-		/**
-		 * 
-		 */
 		private static final long serialVersionUID = -4632778360397986037L;
 
 		private String displayName;
+		private String propertis;
 
-		public PromptBoxFormatter(String displayName) {
+		public PromptBoxFormatter(String displayName, String propertis) {
+			super();
 			this.displayName = displayName;
+			this.propertis = propertis;
 		}
 
 		@Override
 		public String valueToString(Object value) throws ParseException {
 			String result = "";
-			try {
-				result = DataBindingUtil.getProperty(value, displayName);
-			} catch (Exception e) {
-				e.printStackTrace();
+			if (value != null) {
+
+				String[] a = propertis.split(",");
+				Object[] s = new String[a.length];
+				for (int i = 0; i < a.length; i++) {
+					String display = (String) a[i];
+					try {
+						s[i] = DataBindingUtil.getProperty(value, display);
+					} catch (Exception e) {
+						e.printStackTrace();
+					}
+				}
+				result = MessageFormat.format(displayName, s);
 			}
 			return result;
 		}

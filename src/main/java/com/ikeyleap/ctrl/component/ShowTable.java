@@ -22,6 +22,7 @@ import org.jdesktop.beansbinding.BeanProperty;
 
 import com.ikeyleap.cloud.ctrl.swing.component.ext.bean.Person;
 import com.ikeyleap.cloud.ctrl.swing.component.ext.util.DataBindingUtil;
+import com.ikeyleap.ctrl.component.ext.RowHeaderTable;
 
 public class ShowTable extends JDialog {
 
@@ -135,5 +136,6 @@ public class ShowTable extends JDialog {
 		} catch (IntrospectionException e) {
 			e.printStackTrace();
 		}
+		scrollPane.setRowHeaderView(new RowHeaderTable(table, 40));
 	}
 }
