@@ -10,7 +10,6 @@ import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JComponent;
 import javax.swing.JDialog;
@@ -26,6 +25,8 @@ import org.jdesktop.beansbinding.ELProperty;
 
 import com.ikeyleap.ctrl.component.util.DataBindingUtil;
 import com.ikeyleap.ctrl.component.util.IconUtil;
+
+import jiconfont.icons.FontAwesome;
 
 public class JPromptbox extends JComponent implements Promptbox {
 
@@ -72,7 +73,7 @@ public class JPromptbox extends JComponent implements Promptbox {
 		this.dataList = dataList;
 		initialize();
 	}
-	
+
 	@SuppressWarnings("rawtypes")
 	public JPromptbox(List dataList, Class clazz) {
 		this.clazz = clazz;
@@ -136,7 +137,7 @@ public class JPromptbox extends JComponent implements Promptbox {
 		layout.putConstraint(SpringLayout.WEST, formattedTextField, 0, SpringLayout.WEST, this);
 		layout.putConstraint(SpringLayout.SOUTH, this, 0, SpringLayout.SOUTH, formattedTextField);
 
-		// Add and Configure Button		
+		// Add and Configure Button
 		button = new JButton();
 		this.button.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -144,7 +145,7 @@ public class JPromptbox extends JComponent implements Promptbox {
 			}
 		});
 		button.setFocusable(true);
-		button.setIcon(IconUtil.scale(new ImageIcon(ShowTable.class.getResource("/com/ikeyleap/ctrl/component/graphics/search.png")), 16, 16));
+		button.setIcon(IconUtil.getIcon(FontAwesome.SEARCH));
 		add(button);
 		layout.putConstraint(SpringLayout.WEST, button, 1, SpringLayout.EAST, formattedTextField);
 		layout.putConstraint(SpringLayout.EAST, this, 0, SpringLayout.EAST, button);

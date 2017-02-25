@@ -10,7 +10,6 @@ import java.beans.IntrospectionException;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JPanel;
@@ -30,6 +29,8 @@ import org.jdesktop.swingbinding.SwingBindings;
 import com.ikeyleap.ctrl.component.ext.RowHeaderTable;
 import com.ikeyleap.ctrl.component.util.DataBindingUtil;
 import com.ikeyleap.ctrl.component.util.IconUtil;
+
+import jiconfont.icons.FontAwesome;
 
 public class ShowTable extends JDialog {
 
@@ -168,9 +169,7 @@ public class ShowTable extends JDialog {
 		JButton btnFilterButton = new JButton("");
 		btnFilterButton.setBackground(UIManager.getColor("Button.background"));
 		btnFilterButton.setToolTipText("过滤");
-		btnFilterButton.setIcon(IconUtil.scale(new ImageIcon(ShowTable.class.getResource("/com/ikeyleap/ctrl/component/graphics/filter-tool-black-shape.png")), 16, 16));
-//		IconFontSwing.register(FontAwesome.getIconFont());
-//		btnFilterButton.setIcon(IconFontSwing.buildIcon(FontAwesome.FILTER, 16));
+		btnFilterButton.setIcon(IconUtil.getIcon(FontAwesome.FILTER, 16));
 		btnFilterButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				refreshTable();
