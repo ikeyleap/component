@@ -25,6 +25,9 @@ import org.jdesktop.swingbinding.SwingBindings;
 
 import com.ikeyleap.cloud.ctrl.swing.component.ext.util.DataBindingUtil;
 import com.ikeyleap.ctrl.component.ext.RowHeaderTable;
+import com.ikeyleap.ctrl.component.util.IconUtil;
+
+import javax.swing.ImageIcon;
 
 public class ShowTable extends JDialog {
 
@@ -160,17 +163,14 @@ public class ShowTable extends JDialog {
 		toolBar.setFloatable(false);
 		getContentPane().add(toolBar, BorderLayout.NORTH);
 
-		JButton btnNewButton = new JButton("New button");
-		btnNewButton.addActionListener(new ActionListener() {
+		JButton btnFilerButton = new JButton("");
+		btnFilerButton.setIcon(IconUtil.scale(new ImageIcon(ShowTable.class.getResource("/com/ikeyleap/ctrl/component/graphics/filter-tool-black-shape.png")), 16, 16));
+		btnFilerButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-//				dataList.add(new Person("AndeySablin", "sablin@nospam.com", "098765", "", "aaa-vvv-ddd"));
-//				dataList.add(new Person("Mikaylor", "taylor@instantiations.com", "503-598-4900", "", ""));
-//				dataList.add(new Person("Eriayberg", "clayberg@instantiations.com", "+1 (503) 598-4900", "", ""));
-//				dataList.add(new Person("Danubel", "dan@instantiations.com", "503-598-4900", "", ""));
 				refreshTable();
 			}
 		});
-		toolBar.add(btnNewButton);
+		toolBar.add(btnFilerButton);
 
 		try {
 			jTableBinding = SwingBindings.createJTableBinding(UpdateStrategy.READ, dataList, table);

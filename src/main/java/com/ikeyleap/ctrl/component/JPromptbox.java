@@ -10,6 +10,7 @@ import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JComponent;
 import javax.swing.JDialog;
@@ -24,6 +25,7 @@ import org.jdesktop.beansbinding.Bindings;
 import org.jdesktop.beansbinding.ELProperty;
 
 import com.ikeyleap.cloud.ctrl.swing.component.ext.util.DataBindingUtil;
+import com.ikeyleap.ctrl.component.util.IconUtil;
 
 public class JPromptbox extends JComponent implements Promptbox {
 
@@ -142,7 +144,7 @@ public class JPromptbox extends JComponent implements Promptbox {
 			}
 		});
 		button.setFocusable(true);
-		button.setText("...");
+		button.setIcon(IconUtil.scale(new ImageIcon(ShowTable.class.getResource("/com/ikeyleap/ctrl/component/graphics/search.png")), 16, 16));
 		add(button);
 		layout.putConstraint(SpringLayout.WEST, button, 1, SpringLayout.EAST, formattedTextField);
 		layout.putConstraint(SpringLayout.EAST, this, 0, SpringLayout.EAST, button);
