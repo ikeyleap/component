@@ -1,4 +1,4 @@
-package com.ikeyleap.cloud.ctrl.swing.component.ext;
+package com.ikeyleap.cloud.ctrl.swing.component.ext.back;
 
 import java.awt.AWTEvent;
 import java.awt.Component;
@@ -136,14 +136,6 @@ public class JPromptbox extends JComponent implements Promptbox {
 			}
 		}
 		return children;
-	}
-
-	public boolean isDoubleClickAction() {
-		return promptPanel.isDoubleClickAction();
-	}
-
-	public void setDoubleClickAction(boolean doubleClickAction) {
-		promptPanel.setDoubleClickAction(doubleClickAction);
 	}
 
 	public void setVisible(boolean aFlag) {

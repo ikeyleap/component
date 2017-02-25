@@ -10,7 +10,7 @@ import javax.swing.JInternalFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
-import com.ikeyleap.cloud.ctrl.swing.component.ext.JPromptbox;
+import com.ikeyleap.cloud.ctrl.swing.component.ext.back.JPromptbox;
 import com.ikeyleap.cloud.ctrl.swing.component.ext.bean.Person;
 
 public class App extends JFrame {

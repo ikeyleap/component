@@ -1,4 +1,4 @@
-package com.ikeyleap.cloud.ctrl.swing.component.ext;
+package com.ikeyleap.cloud.ctrl.swing.component.ext.back;
 
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
@@ -36,12 +36,10 @@ public class JPromptPanel extends JComponent implements PromptPanel {
 	private static final long serialVersionUID = -2299249311312882915L;
 
 	private Set<ActionListener> actionListeners;
-	private boolean doubleClickAction;
 	private InternalModel internalModel;
 	private InternalController internalController;
 	private InternalView internalView;
 
-	@SuppressWarnings("rawtypes")
 	private List dataList = new ArrayList();
 
 	/**
@@ -70,7 +68,6 @@ public class JPromptPanel extends JComponent implements PromptPanel {
 	public JPromptPanel(PromptModel<?> model, List dataList) {
 		setDataList(dataList);
 		actionListeners = new HashSet<ActionListener>();
-		doubleClickAction = false;
 
 		internalModel = new InternalModel(model);
 		internalController = new InternalController();
@@ -100,14 +97,6 @@ public class JPromptPanel extends JComponent implements PromptPanel {
 		for (ActionListener actionListener : actionListeners) {
 			actionListener.actionPerformed(new ActionEvent(this, ActionEvent.ACTION_PERFORMED, "Date selected"));
 		}
-	}
-
-	public void setDoubleClickAction(boolean doubleClickAction) {
-		this.doubleClickAction = doubleClickAction;
-	}
-
-	public boolean isDoubleClickAction() {
-		return doubleClickAction;
 	}
 
 	public PromptModel<?> getModel() {
@@ -145,86 +134,8 @@ public class JPromptPanel extends JComponent implements PromptPanel {
 			this.setSize(200, 180);
 			this.setPreferredSize(new java.awt.Dimension(200, 180));
 			this.setOpaque(false);
-			this.add(getCenterPanel(), java.awt.BorderLayout.CENTER);
-			this.add(getSouthPanel(), java.awt.BorderLayout.SOUTH);
+			add(new PromptBoxPanel(dataList), BorderLayout.CENTER);
 
-			JToolBar toolBar = new JToolBar();
-			toolBar.setFloatable(false);
-			add(toolBar, BorderLayout.NORTH);
-
-			JButton btnNewButton = new JButton("S");
-			toolBar.add(btnNewButton);
-
-		}
-
-		/**
-		 * This method initializes southPanel
-		 *
-		 * @return javax.swing.JPanel
-		 */
-		private JPanel getSouthPanel() {
-			southPanel = new JPanel();
-			southPanel.setLayout(new FlowLayout(FlowLayout.RIGHT));
-			JButton okButton = new JButton("OK");
-			okButton.setActionCommand("OK");
-			southPanel.add(okButton);
-			JButton cancelButton = new JButton("Cancel");
-			cancelButton.setActionCommand("Cancel");
-			southPanel.add(cancelButton);
-
-			return southPanel;
-		}
-
-		/**
-		 * This method initializes centerPanel
-		 *
-		 * @return javax.swing.JPanel
-		 */
-		private JPanel getCenterPanel() {
-			if (centerPanel == null) {
-				centerPanel = new javax.swing.JPanel();
-				centerPanel.setLayout(new java.awt.BorderLayout());
-				centerPanel.setOpaque(false);
-
-				JTable table;
-				DefaultTableModel tableModel;
-				tableModel = new DefaultTableModel(new Object[][] {}, new Object[] {});
-				table = new JTable(tableModel) {
-					private static final long serialVersionUID = -8110501438839938571L;
-
-					public boolean isCellEditable(int row, int column) {
-						return false;
-					}// 表格不允许被编辑
-				};
-
-				table.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
-				JScrollPane scrollPane = new JScrollPane(table);
-				table.addMouseListener(internalController);
-
-//				dataList.add(new Person("Konstantin Scheglov", "kosta@nospam.com", "1234567890", "", ""));
-//				dataList.add(new Person("Alexander Mitin", "mitin@nospam.com", "", "0987654321", ""));
-//				dataList.add(new Person("Alexander Lobas", "lobas@nospam.com", "", "", "111-222-333-00"));
-//				dataList.add(new Person("Andey Sablin", "sablin@nospam.com", "098765", "", "aaa-vvv-ddd"));
-//				dataList.add(new Person("Mike Taylor", "taylor@instantiations.com", "503-598-4900", "", ""));
-//				dataList.add(new Person("Eric Clayberg", "clayberg@instantiations.com", "+1 (503) 598-4900", "", ""));
-//				dataList.add(new Person("Dan Rubel", "dan@instantiations.com", "503-598-4900", "", ""));
-
-				try {
-					DataBindingUtil.initDataBindings(dataList, Person.class, table);
-				} catch (IntrospectionException e) {
-					e.printStackTrace();
-				}
-
-				if (DataBindingUtil.hasId(Person.class)) {
-					TableColumn column_id_data = table.getColumn("id");
-					column_id_data.setMaxWidth(0);
-					column_id_data.setMinWidth(0);
-					column_id_data.setPreferredWidth(0);
-				}
-
-				centerPanel.add(scrollPane, java.awt.BorderLayout.CENTER);
-			}
-			return centerPanel;
 		}
 
 	}
