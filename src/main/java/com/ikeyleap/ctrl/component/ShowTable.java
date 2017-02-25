@@ -27,8 +27,8 @@ import org.jdesktop.beansbinding.BeanProperty;
 import org.jdesktop.swingbinding.JTableBinding;
 import org.jdesktop.swingbinding.SwingBindings;
 
-import com.ikeyleap.cloud.ctrl.swing.component.ext.util.DataBindingUtil;
 import com.ikeyleap.ctrl.component.ext.RowHeaderTable;
+import com.ikeyleap.ctrl.component.util.DataBindingUtil;
 import com.ikeyleap.ctrl.component.util.IconUtil;
 
 public class ShowTable extends JDialog {

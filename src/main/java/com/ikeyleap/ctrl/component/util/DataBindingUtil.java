@@ -1,4 +1,4 @@
-package com.ikeyleap.cloud.ctrl.swing.component.ext.util;
+package com.ikeyleap.ctrl.component.util;
 
 import java.beans.BeanInfo;
 import java.beans.IntrospectionException;

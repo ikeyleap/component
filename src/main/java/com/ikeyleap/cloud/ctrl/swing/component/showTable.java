@@ -25,7 +25,8 @@ import org.jdesktop.swingbinding.JTableBinding;
 import org.jdesktop.swingbinding.SwingBindings;
 
 import com.ikeyleap.cloud.ctrl.swing.component.ext.bean.Person;
-import com.ikeyleap.cloud.ctrl.swing.component.ext.util.DataBindingUtil;
+import com.ikeyleap.ctrl.component.util.DataBindingUtil;
+
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 

@@ -32,7 +32,7 @@ import com.ikeyleap.cloud.ctrl.swing.component.ext.back.PromptModel;
 import com.ikeyleap.cloud.ctrl.swing.component.ext.back.PromptPanel;
 import com.ikeyleap.cloud.ctrl.swing.component.ext.back.UtilPromptModel;
 import com.ikeyleap.cloud.ctrl.swing.component.ext.bean.Person;
-import com.ikeyleap.cloud.ctrl.swing.component.ext.util.DataBindingUtil;
+import com.ikeyleap.ctrl.component.util.DataBindingUtil;
 
 public class JPromptPanel extends JComponent implements PromptPanel {
 

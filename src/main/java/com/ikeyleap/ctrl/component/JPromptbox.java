@@ -24,7 +24,7 @@ import org.jdesktop.beansbinding.BeanProperty;
 import org.jdesktop.beansbinding.Bindings;
 import org.jdesktop.beansbinding.ELProperty;
 
-import com.ikeyleap.cloud.ctrl.swing.component.ext.util.DataBindingUtil;
+import com.ikeyleap.ctrl.component.util.DataBindingUtil;
 import com.ikeyleap.ctrl.component.util.IconUtil;
 
 public class JPromptbox extends JComponent implements Promptbox {

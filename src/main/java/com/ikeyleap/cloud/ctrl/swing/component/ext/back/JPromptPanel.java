@@ -29,7 +29,7 @@ import javax.swing.table.TableColumn;
 import javax.swing.table.TableModel;
 
 import com.ikeyleap.cloud.ctrl.swing.component.ext.bean.Person;
-import com.ikeyleap.cloud.ctrl.swing.component.ext.util.DataBindingUtil;
+import com.ikeyleap.ctrl.component.util.DataBindingUtil;
 
 public class JPromptPanel extends JComponent implements PromptPanel {
 
