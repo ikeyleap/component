@@ -21,6 +21,8 @@ import org.jdesktop.beansbinding.BeanProperty;
 import org.jdesktop.beansbinding.Bindings;
 import org.jdesktop.beansbinding.ELProperty;
 
+import com.ikeyleap.cloud.ctrl.swing.component.ext.util.DataBindingUtil;
+
 public class JPromptbox extends JComponent implements Promptbox {
 
 	private static final long serialVersionUID = 2814777654384974503L;
@@ -132,33 +134,25 @@ public class JPromptbox extends JComponent implements Promptbox {
 		autoBinding.bind();
 	}
 
-	public static String getProperty(Object object, String name) throws Exception {
-		PropertyDescriptor proDescriptor = new PropertyDescriptor(name, object.getClass());
-		Object displayName = proDescriptor.getReadMethod().invoke(object);
-		System.out.println("get userName:" + displayName.toString());
-		return displayName.toString();
-	}
-	
 	private class PromptBoxFormatter extends DefaultFormatter {
 
 		/**
 		 * 
 		 */
 		private static final long serialVersionUID = -4632778360397986037L;
-		
+
 		private String displayName;
-		
+
 		public PromptBoxFormatter(String displayName) {
-			 this.displayName =  displayName;
+			this.displayName = displayName;
 		}
 
 		@Override
 		public String valueToString(Object value) throws ParseException {
 			String result = "";
 			try {
-				result = getProperty(value, displayName);
+				result = DataBindingUtil.getProperty(value, displayName);
 			} catch (Exception e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 			return result;

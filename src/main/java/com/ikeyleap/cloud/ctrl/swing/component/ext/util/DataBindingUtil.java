@@ -23,7 +23,8 @@ public class DataBindingUtil {
 		PropertyDescriptor[] props = getProps(Person.class);
 		for (PropertyDescriptor pd : props) {
 			if (!"class".equals(pd.getName())) {
-				jTableBinding.addColumnBinding(BeanProperty.create(pd.getName())).setColumnName(pd.getName()).setEditable(false);
+				jTableBinding.addColumnBinding(BeanProperty.create(pd.getName())).setColumnName(pd.getName())
+						.setEditable(false);
 			}
 		}
 		jTableBinding.setEditable(false);
@@ -39,7 +40,7 @@ public class DataBindingUtil {
 
 		return props;
 	}
-	
+
 	@SuppressWarnings("rawtypes")
 	public static boolean hasId(Class clazz) {
 		boolean hasid = false;
@@ -47,7 +48,8 @@ public class DataBindingUtil {
 		try {
 			props = getProps(clazz);
 			for (PropertyDescriptor dp : props) {
-				if ("id".equals(dp.getName())) hasid = true;
+				if ("id".equals(dp.getName()))
+					hasid = true;
 			}
 		} catch (IntrospectionException e) {
 			// TODO Auto-generated catch block
@@ -55,4 +57,14 @@ public class DataBindingUtil {
 		}
 		return hasid;
 	}
+
+	public static String getProperty(Object object, String name) throws Exception {
+		if (object != null) {
+			PropertyDescriptor proDescriptor = new PropertyDescriptor(name, object.getClass());
+			Object displayName = proDescriptor.getReadMethod().invoke(object);
+			return displayName.toString();
+		} else
+			return null;
+	}
+
 }
