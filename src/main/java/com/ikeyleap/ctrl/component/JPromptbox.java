@@ -136,7 +136,7 @@ public class JPromptbox extends JComponent implements Promptbox {
 		layout.putConstraint(SpringLayout.WEST, formattedTextField, 0, SpringLayout.WEST, this);
 		layout.putConstraint(SpringLayout.SOUTH, this, 0, SpringLayout.SOUTH, formattedTextField);
 
-		// Add and Configure Button
+		// Add and Configure Button		
 		button = new JButton();
 		this.button.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {

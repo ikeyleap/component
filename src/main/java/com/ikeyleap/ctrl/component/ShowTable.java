@@ -165,16 +165,18 @@ public class ShowTable extends JDialog {
 		toolBar.setFloatable(false);
 		getContentPane().add(toolBar, BorderLayout.NORTH);
 
-		JButton btnFilerButton = new JButton("");
-		btnFilerButton.setBackground(UIManager.getColor("Button.background"));
-		btnFilerButton.setToolTipText("过滤");
-		btnFilerButton.setIcon(IconUtil.scale(new ImageIcon(ShowTable.class.getResource("/com/ikeyleap/ctrl/component/graphics/filter-tool-black-shape.png")), 16, 16));
-		btnFilerButton.addActionListener(new ActionListener() {
+		JButton btnFilterButton = new JButton("");
+		btnFilterButton.setBackground(UIManager.getColor("Button.background"));
+		btnFilterButton.setToolTipText("过滤");
+		btnFilterButton.setIcon(IconUtil.scale(new ImageIcon(ShowTable.class.getResource("/com/ikeyleap/ctrl/component/graphics/filter-tool-black-shape.png")), 16, 16));
+//		IconFontSwing.register(FontAwesome.getIconFont());
+//		btnFilterButton.setIcon(IconFontSwing.buildIcon(FontAwesome.FILTER, 16));
+		btnFilterButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				refreshTable();
 			}
 		});
-		toolBar.add(btnFilerButton);
+		toolBar.add(btnFilterButton);
 
 		try {
 			jTableBinding = SwingBindings.createJTableBinding(UpdateStrategy.READ, dataList, table);
