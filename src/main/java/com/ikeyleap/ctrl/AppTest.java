@@ -9,7 +9,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
-import com.ikeyleap.ctrl.component.JPromptbox;
+import com.ikeyleap.ctrl.component.promptbox.JPromptbox;
 
 public class AppTest extends JFrame {
 

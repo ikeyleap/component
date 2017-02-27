@@ -1,4 +1,4 @@
-package com.ikeyleap.ctrl.component;
+package com.ikeyleap.ctrl.component.promptbox;
 
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;

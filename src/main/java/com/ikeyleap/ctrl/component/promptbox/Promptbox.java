@@ -25,7 +25,7 @@
  authors and should not be interpreted as representing official policies, either expressed
  or implied, of Juan Heyns.
  */
-package com.ikeyleap.ctrl.component;
+package com.ikeyleap.ctrl.component.promptbox;
 
 public interface Promptbox {
 
