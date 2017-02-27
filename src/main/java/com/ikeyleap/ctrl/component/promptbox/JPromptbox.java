@@ -28,10 +28,9 @@ import com.ikeyleap.ctrl.component.util.IconUtil;
 
 import jiconfont.icons.FontAwesome;
 
+@SuppressWarnings("serial")
 public class JPromptbox extends JComponent implements Promptbox {
-
-	private static final long serialVersionUID = 2814777654384974503L;
-
+	
 	private JFormattedTextField formattedTextField;
 	private JButton button;
 
@@ -124,6 +123,7 @@ public class JPromptbox extends JComponent implements Promptbox {
 	}
 
 	private void initialize() {
+
 		// Create Layout
 		SpringLayout layout = new SpringLayout();
 		setLayout(layout);
@@ -145,9 +145,9 @@ public class JPromptbox extends JComponent implements Promptbox {
 			}
 		});
 		button.setFocusable(true);
-		button.setIcon(IconUtil.getIcon(FontAwesome.SEARCH));
+		button.setIcon(IconUtil.getIcon(FontAwesome.SEARCH, 12));
 		add(button);
-		layout.putConstraint(SpringLayout.WEST, button, 1, SpringLayout.EAST, formattedTextField);
+		layout.putConstraint(SpringLayout.WEST, button, 0, SpringLayout.EAST, formattedTextField);
 		layout.putConstraint(SpringLayout.EAST, this, 0, SpringLayout.EAST, button);
 		layout.putConstraint(SpringLayout.SOUTH, this, 0, SpringLayout.SOUTH, button);
 
