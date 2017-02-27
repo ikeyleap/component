@@ -1,25 +1,25 @@
 package com.ikeyleap.ctrl;
 
+import java.awt.BorderLayout;
 import java.awt.EventQueue;
-import java.awt.FlowLayout;
 import java.util.ArrayList;
 import java.util.List;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.JTable;
 import javax.swing.border.EmptyBorder;
 
 import com.ikeyleap.ctrl.component.promptbox.JPromptbox;
+import com.ikeyleap.ctrl.component.table.KXTable;
 
+@SuppressWarnings("serial")
 public class AppTest extends JFrame {
 
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = -8440626069723637685L;
 	private JPanel contentPane;
 	private JPromptbox promptbox;
-	
+	public JPanel panel;
+	private KXTable table;
 
 	/**
 	 * Launch the application.
@@ -43,15 +43,15 @@ public class AppTest extends JFrame {
 	public AppTest() {
 		initialize();
 	}
+
 	@SuppressWarnings({ "rawtypes", "unchecked" })
 	private void initialize() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 450, 300);
+		setBounds(100, 100, 510, 278);
 		this.contentPane = new JPanel();
 		this.contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(this.contentPane);
-		this.contentPane.setLayout(new FlowLayout(FlowLayout.LEFT, 5, 5));
-		
+
 		List dataList = new ArrayList();
 		dataList.add(new Person("Konstantin Scheglov", "kosta@nospam.com", "1234567890", "", ""));
 		dataList.add(new Person("Alexander Mitin", "mitin@nospam.com", "", "0987654321", ""));
@@ -64,9 +64,22 @@ public class AppTest extends JFrame {
 		dataList.add(new Person("Mikaylor", "taylor@instantiations.com", "503-598-4900", "", ""));
 		dataList.add(new Person("Eriayberg", "clayberg@instantiations.com", "+1 (503) 598-4900", "", ""));
 		dataList.add(new Person("Danubel", "dan@instantiations.com", "503-598-4900", "", ""));
-		
+		this.contentPane.setLayout(new BorderLayout(0, 0));
+
 		promptbox = new JPromptbox(dataList, Person.class);
-		this.contentPane.add(promptbox);
+		this.contentPane.add(promptbox, BorderLayout.NORTH);
+
+		this.panel = new JPanel();
+		panel.setLayout(new BorderLayout(0, 0));
+		Object[][] cellData = { { "row1-col1", "row1-col2" }, { "row2-col1", "row2-col2" } };
+		String[] columnNames = { "col1", "col2" };
+
+		table = new KXTable(cellData, columnNames);
+		panel.add(table, BorderLayout.CENTER);
+		this.contentPane.add(this.panel);
 	}
 
+	public JPanel getPanel() {
+		return this.panel;
+	}
 }
