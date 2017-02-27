@@ -2,10 +2,10 @@ package com.ikeyleap.ctrl.component.table;
 
 import java.awt.BorderLayout;
 
-import javax.swing.BorderFactory;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.ListSelectionModel;
+import javax.swing.border.EtchedBorder;
 import javax.swing.table.TableColumnModel;
 import javax.swing.table.TableModel;
 
@@ -61,7 +61,8 @@ public class KXTable extends JTable {
 		scrollPane = new JScrollPane(table);
 		table.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 		rowHeaderTable = new RowHeaderTable(table, columnWidth);
-		this.rowHeaderTable.setBorder(BorderFactory.createTitledBorder(""));
+		this.rowHeaderTable.setShowGrid(false);
+		this.rowHeaderTable.setBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null));
 		scrollPane.setRowHeaderView(rowHeaderTable);
 		add(scrollPane, BorderLayout.CENTER);
 	}
