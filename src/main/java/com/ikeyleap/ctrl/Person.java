@@ -1,4 +1,4 @@
-package com.ikeyleap.cloud.ctrl.swing.component.ext.bean;
+package com.ikeyleap.ctrl;
 
 
 /**

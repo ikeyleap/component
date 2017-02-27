@@ -9,7 +9,6 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
-import com.ikeyleap.cloud.ctrl.swing.component.ext.bean.Person;
 import com.ikeyleap.ctrl.component.JPromptbox;
 
 public class AppTest extends JFrame {
