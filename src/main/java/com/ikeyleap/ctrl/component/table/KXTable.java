@@ -1,18 +1,15 @@
 package com.ikeyleap.ctrl.component.table;
 
 import java.awt.BorderLayout;
-import java.util.Vector;
 
 import javax.swing.BorderFactory;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.ListSelectionModel;
-import javax.swing.border.TitledBorder;
 import javax.swing.table.TableColumnModel;
 import javax.swing.table.TableModel;
 
 import com.ikeyleap.ctrl.component.ext.RowHeaderTable;
-import javax.swing.UIManager;
 
 @SuppressWarnings("serial")
 public class KXTable extends JTable {
@@ -46,10 +43,6 @@ public class KXTable extends JTable {
 		initialize();
 	}
 
-	public KXTable(Vector rowData, Vector columnNames) {
-		this.table = new JTable(rowData, columnNames);
-		initialize();
-	}
 
 	public KXTable() {
 		table = new JTable();
