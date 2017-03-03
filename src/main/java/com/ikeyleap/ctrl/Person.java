@@ -1,78 +1,103 @@
 package com.ikeyleap.ctrl;
 
-import com.ikeyleap.ctrl.component.AbstractModelObject;
-
 /**
  * @author lobas_av
  * 
  */
-public class Person extends AbstractModelObject {
-	private String m_name;
-	private String m_email;
-	private String m_phone;
-	private String m_mobilePhone1;
-	private String m_mobilePhone2;
+public class Person {
+	private String name;
+	private String email;
+	private String phone;
+	private String mobilePhone1;
 
 	public Person() {
-		m_name = "???????";
+		super();
 	}
 
-	public Person(String name, String email, String phone, String phone1,
-			String phone2) {
-		m_name = name;
-		m_email = email;
-		m_phone = phone;
-		m_mobilePhone1 = phone1;
-		m_mobilePhone2 = phone2;
-	}
+	private String mobilePhone2;
 
+	/**
+	 * @return the name
+	 */
 	public String getName() {
-		return m_name;
+		return name;
 	}
 
+	/**
+	 * @param name
+	 *            the name to set
+	 */
 	public void setName(String name) {
-		String oldValue = m_name;
-		m_name = name;
-		firePropertyChange("name", oldValue, m_name);
+		this.name = name;
 	}
 
+	/**
+	 * @return the email
+	 */
 	public String getEmail() {
-		return m_email;
+		return email;
 	}
 
+	/**
+	 * @param email
+	 *            the email to set
+	 */
 	public void setEmail(String email) {
-		String oldValue = m_email;
-		m_email = email;
-		firePropertyChange("email", oldValue, m_email);
+		this.email = email;
 	}
 
+	/**
+	 * @return the phone
+	 */
 	public String getPhone() {
-		return m_phone;
+		return phone;
 	}
 
+	/**
+	 * @param phone
+	 *            the phone to set
+	 */
 	public void setPhone(String phone) {
-		String oldValue = m_phone;
-		m_phone = phone;
-		firePropertyChange("phone", oldValue, m_phone);
+		this.phone = phone;
 	}
 
+	/**
+	 * @return the mobilePhone1
+	 */
 	public String getMobilePhone1() {
-		return m_mobilePhone1;
+		return mobilePhone1;
 	}
 
-	public void setMobilePhone1(String phone1) {
-		String oldValue = m_mobilePhone1;
-		m_mobilePhone1 = phone1;
-		firePropertyChange("mobilePhone1", oldValue, m_mobilePhone1);
+	/**
+	 * @param mobilePhone1
+	 *            the mobilePhone1 to set
+	 */
+	public void setMobilePhone1(String mobilePhone1) {
+		this.mobilePhone1 = mobilePhone1;
 	}
 
+	/**
+	 * @return the mobilePhone2
+	 */
 	public String getMobilePhone2() {
-		return m_mobilePhone2;
+		return mobilePhone2;
 	}
 
-	public void setMobilePhone2(String phone2) {
-		String oldValue = m_mobilePhone2;
-		m_mobilePhone2 = phone2;
-		firePropertyChange("mobilePhone2", oldValue, m_mobilePhone2);
+	/**
+	 * @param mobilePhone2
+	 *            the mobilePhone2 to set
+	 */
+	public void setMobilePhone2(String mobilePhone2) {
+		this.mobilePhone2 = mobilePhone2;
 	}
+
+	public Person(String name, String email, String phone, String mobilePhone1, String mobilePhone2) {
+		super();
+		this.name = name;
+		this.email = email;
+		this.phone = phone;
+		this.mobilePhone1 = mobilePhone1;
+		this.mobilePhone2 = mobilePhone2;
+	}
+
 }
