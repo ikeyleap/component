@@ -1,5 +1,6 @@
 package com.ikeyleap.ctrl;
 
+import com.ikeyleap.ctrl.component.AbstractModelObject;
 
 /**
  * @author lobas_av
