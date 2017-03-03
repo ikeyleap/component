@@ -12,6 +12,10 @@ public class RowHeaderTable extends JTable
 	private static final long serialVersionUID = 632499839302656622L;
 	@SuppressWarnings("unused")
 	private JTable refTable;//需要添加rowHeader的JTable  
+	
+	public RowHeaderTable(JTable refTable){
+		this(refTable, 40);
+	}
     /** 
      * 为JTable添加RowHeader， 
      * @param refTable 需要添加rowHeader的JTable   

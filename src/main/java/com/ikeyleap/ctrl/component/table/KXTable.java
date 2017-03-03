@@ -121,6 +121,13 @@ public class KXTable extends JComponent {
 	@SuppressWarnings("unchecked")
 	public void addRow(Object o) {
 		model.addObject(o);
-		scrollPane.setRowHeaderView(rowLines);
+		refresh();
+	}
+	
+	private void refresh() {
+		this.rowLines = new RowHeaderTable(table);
+		this.rowLines.setShowGrid(false);
+		this.rowLines.setBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null));
+		scrollPane.setRowHeaderView(this.rowLines);
 	}
 }
