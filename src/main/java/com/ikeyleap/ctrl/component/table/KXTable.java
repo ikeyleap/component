@@ -20,7 +20,7 @@ public class KXTable extends JComponent {
 	private JScrollPane scrollPane;
 	private JTable table;
 	private RowHeaderTable rowLines;
-	
+
 	@SuppressWarnings("rawtypes")
 	private KXTableModel model;
 
@@ -53,7 +53,7 @@ public class KXTable extends JComponent {
 		table = new JTable();
 		initialize();
 	}
-	
+
 	@SuppressWarnings("rawtypes")
 	public KXTable(KXTableModel model, Class clazz) {
 		table = new JTable();
@@ -83,7 +83,8 @@ public class KXTable extends JComponent {
 	}
 
 	/**
-	 * @param scrollPane the scrollPane to set
+	 * @param scrollPane
+	 *            the scrollPane to set
 	 */
 	public void setScrollPane(JScrollPane scrollPane) {
 		this.scrollPane = scrollPane;
@@ -97,7 +98,8 @@ public class KXTable extends JComponent {
 	}
 
 	/**
-	 * @param table the table to set
+	 * @param table
+	 *            the table to set
 	 */
 	public void setTable(JTable table) {
 		this.table = table;
@@ -111,19 +113,28 @@ public class KXTable extends JComponent {
 	}
 
 	/**
-	 * @param rowLines the rowLines to set
+	 * @param rowLines
+	 *            the rowLines to set
 	 */
 	public void setRowLines(RowHeaderTable rowLines) {
 		this.rowLines = rowLines;
 	}
 
-	
 	@SuppressWarnings("unchecked")
 	public void addRow(Object o) {
 		model.addObject(o);
 		refresh();
 	}
-	
+
+	@SuppressWarnings("unchecked")
+	public void delRow() {
+		if (table.getSelectedRow() >= 0) {
+			Object o = model.getDataList().get(table.getSelectedRow());
+			model.removeObject(o);
+			refresh();
+		}
+	}
+
 	private void refresh() {
 		this.rowLines = new RowHeaderTable(table);
 		this.rowLines.setShowGrid(false);

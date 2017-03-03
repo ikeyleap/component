@@ -23,9 +23,10 @@ public class BindTable extends JFrame {
 	public KXTable table;
 
 	public JToolBar toolBar;
-	public JButton btnNewButton;
+	public JButton btnAddButton;
 
 	private KXTableModel<Person> model = new KXTableModel<Person>();
+	private JButton btnDelButton;
 
 	/**
 	 * Launch the application.
@@ -78,13 +79,21 @@ public class BindTable extends JFrame {
 		this.toolBar = new JToolBar();
 		this.contentPane.add(this.toolBar, BorderLayout.NORTH);
 
-		this.btnNewButton = new JButton("New button");
-		this.btnNewButton.addActionListener(new ActionListener() {
+		this.btnAddButton = new JButton("Add");
+		this.btnAddButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				table.addRow(new Person("11111111111111111", "kosta@nospam.com", "1234567890", "", ""));
 			}
 		});
-		this.toolBar.add(this.btnNewButton);
+		this.toolBar.add(this.btnAddButton);
+		
+		this.btnDelButton = new JButton("Del");
+		this.btnDelButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				table.delRow();
+			}
+		});
+		this.toolBar.add(this.btnDelButton);
 	}
 
 }
