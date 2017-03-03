@@ -66,6 +66,8 @@ public class KXTable extends JComponent {
 		BorderLayout layout = new BorderLayout();
 		setLayout(layout);
 
+		table.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+		
 		scrollPane = new JScrollPane(table);
 		table.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 		this.rowLines = new RowHeaderTable(table, columnWidth);
