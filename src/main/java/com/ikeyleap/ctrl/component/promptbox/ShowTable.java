@@ -169,7 +169,7 @@ public class ShowTable extends JDialog {
 		JButton btnFilterButton = new JButton("");
 		btnFilterButton.setBackground(UIManager.getColor("Button.background"));
 		btnFilterButton.setToolTipText("过滤");
-		btnFilterButton.setIcon(IconUtil.getIcon(FontAwesome.FILTER, 16));
+		btnFilterButton.setIcon(IconUtil.getIcon(FontAwesome.FILTER, 12));
 		btnFilterButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				refreshTable();
