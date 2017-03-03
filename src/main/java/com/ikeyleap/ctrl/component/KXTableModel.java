@@ -28,6 +28,10 @@ public class KXTableModel<T> extends AbstractModelObject {
 		firePropertyChange("dataListCount", oldValue.size(), dataList.size());
 	}
 
+	public int getDataListCount() {
+		return dataList.size();
+	}
+
 	/**
 	 * @return the dataList
 	 */
@@ -35,7 +39,11 @@ public class KXTableModel<T> extends AbstractModelObject {
 		return dataList;
 	}
 
-	public int getDataListCount() {
-		return dataList.size();
+	/**
+	 * @param dataList
+	 *            the dataList to set
+	 */
+	public void setDataList(List<T> dataList) {
+		this.dataList = dataList;
 	}
 }
