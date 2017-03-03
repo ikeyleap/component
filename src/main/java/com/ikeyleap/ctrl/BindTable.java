@@ -9,19 +9,18 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
-import javax.swing.JTable;
 import javax.swing.JToolBar;
 import javax.swing.border.EmptyBorder;
 
 import com.ikeyleap.ctrl.component.KXTableModel;
-import com.ikeyleap.ctrl.component.util.DataBindingUtil;
+import com.ikeyleap.ctrl.component.table.KXTable;
 
 @SuppressWarnings("serial")
 public class BindTable extends JFrame {
 
 	private JPanel contentPane;
 	public JScrollPane scrollPane;
-	public JTable table;
+	public KXTable table;
 
 	public JToolBar toolBar;
 	public JButton btnNewButton;
@@ -72,11 +71,9 @@ public class BindTable extends JFrame {
 		model.addObject(new Person("Danubel", "dan@instantiations.com", "503-598-4900", "", ""));
 
 		this.scrollPane = new JScrollPane();
-		this.contentPane.add(this.scrollPane, BorderLayout.CENTER);
 
-		this.table = new JTable();
-		this.scrollPane.setViewportView(this.table);
-		DataBindingUtil.initDataBindings(model, Person.class, table);
+		this.table = new KXTable(model, Person.class);
+		this.contentPane.add(this.table, BorderLayout.CENTER);
 
 		this.toolBar = new JToolBar();
 		this.contentPane.add(this.toolBar, BorderLayout.NORTH);
@@ -84,8 +81,7 @@ public class BindTable extends JFrame {
 		this.btnNewButton = new JButton("New button");
 		this.btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				model.addObject(new Person("11111111111111111", "kosta@nospam.com", "1234567890", "", ""));
-				table.repaint();
+				table.addRow(new Person("11111111111111111", "kosta@nospam.com", "1234567890", "", ""));
 			}
 		});
 		this.toolBar.add(this.btnNewButton);

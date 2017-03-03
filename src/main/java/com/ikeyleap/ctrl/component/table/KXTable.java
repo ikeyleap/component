@@ -10,7 +10,9 @@ import javax.swing.border.EtchedBorder;
 import javax.swing.table.TableColumnModel;
 import javax.swing.table.TableModel;
 
+import com.ikeyleap.ctrl.component.KXTableModel;
 import com.ikeyleap.ctrl.component.ext.RowHeaderTable;
+import com.ikeyleap.ctrl.component.util.DataBindingUtil;
 
 @SuppressWarnings("serial")
 public class KXTable extends JComponent {
@@ -18,6 +20,9 @@ public class KXTable extends JComponent {
 	private JScrollPane scrollPane;
 	private JTable table;
 	private RowHeaderTable rowLines;
+	
+	@SuppressWarnings("rawtypes")
+	private KXTableModel model;
 
 	public KXTable(int numRows, int numColumns) {
 		this.table = new JTable(numRows, numColumns);
@@ -48,17 +53,14 @@ public class KXTable extends JComponent {
 		table = new JTable();
 		initialize();
 	}
-
-	// public KXTable(JTable refTable) {
-	// this.table = new JTable() {
-	// @Override
-	// public boolean isCellEditable(int row, int column) {
-	// return false;
-	// }
-	// };
-	// table = refTable;
-	// initialize();
-	// }
+	
+	@SuppressWarnings("rawtypes")
+	public KXTable(KXTableModel model, Class clazz) {
+		table = new JTable();
+		this.model = model;
+		DataBindingUtil.initDataBindings(model, clazz, table);
+		initialize();
+	}
 
 	private void initialize() {
 		BorderLayout layout = new BorderLayout();
@@ -73,4 +75,52 @@ public class KXTable extends JComponent {
 		add(scrollPane, BorderLayout.CENTER);
 	}
 
+	/**
+	 * @return the scrollPane
+	 */
+	public JScrollPane getScrollPane() {
+		return scrollPane;
+	}
+
+	/**
+	 * @param scrollPane the scrollPane to set
+	 */
+	public void setScrollPane(JScrollPane scrollPane) {
+		this.scrollPane = scrollPane;
+	}
+
+	/**
+	 * @return the table
+	 */
+	public JTable getTable() {
+		return table;
+	}
+
+	/**
+	 * @param table the table to set
+	 */
+	public void setTable(JTable table) {
+		this.table = table;
+	}
+
+	/**
+	 * @return the rowLines
+	 */
+	public RowHeaderTable getRowLines() {
+		return rowLines;
+	}
+
+	/**
+	 * @param rowLines the rowLines to set
+	 */
+	public void setRowLines(RowHeaderTable rowLines) {
+		this.rowLines = rowLines;
+	}
+
+	
+	@SuppressWarnings("unchecked")
+	public void addRow(Object o) {
+		model.addObject(o);
+		scrollPane.setRowHeaderView(rowLines);
+	}
 }
