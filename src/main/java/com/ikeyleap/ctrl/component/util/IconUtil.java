@@ -18,7 +18,7 @@ public class IconUtil {
 	}
 
 	public static ImageIcon scale(ImageIcon icon) {
-		return scale(icon, 16, 16);
+		return scale(icon, 12, 12);
 	}
 
 	public static Icon getIcon(IconCode iconCode, float size, Color color) {
@@ -32,6 +32,6 @@ public class IconUtil {
 	}
 	
 	public static Icon getIcon(IconCode iconCode) {
-		return getIcon(iconCode, 16, new Color(0, 150, 0));
+		return getIcon(iconCode, 12, new Color(0, 150, 0));
 	}
 }
