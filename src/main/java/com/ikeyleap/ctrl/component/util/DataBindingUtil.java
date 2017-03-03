@@ -13,18 +13,46 @@ import org.jdesktop.beansbinding.BeanProperty;
 import org.jdesktop.swingbinding.JTableBinding;
 import org.jdesktop.swingbinding.SwingBindings;
 
+import com.ikeyleap.ctrl.component.KXTableModel;
+
 public class DataBindingUtil {
+	
+	@SuppressWarnings({ "rawtypes", "unchecked" })
+	public static void initDataBindings(KXTableModel model, Class clazz, JTable table){
+		JTableBinding jTableBinding = SwingBindings.createJTableBinding(UpdateStrategy.READ, model, BeanProperty.create("dataList"), table);
+		PropertyDescriptor[] props;
+		try {
+			props = getProps(clazz);
+			for (PropertyDescriptor pd : props) {
+				if (!"class".equals(pd.getName())) {
+					jTableBinding.addColumnBinding(BeanProperty.create(pd.getName())).setColumnName(pd.getName())
+							.setEditable(false);
+				}
+			}
+		} catch (IntrospectionException e) {
+			e.printStackTrace();
+		}
+		
+		jTableBinding.setEditable(false);
+		jTableBinding.bind();
+	}
 
 	@SuppressWarnings({ "unchecked", "rawtypes" })
-	public static void initDataBindings(List list, Class clazz, JTable table) throws IntrospectionException {
+	public static void initDataBindings(List list, Class clazz, JTable table){
 		JTableBinding jTableBinding = SwingBindings.createJTableBinding(UpdateStrategy.READ, list, table);
-		PropertyDescriptor[] props = getProps(clazz);
-		for (PropertyDescriptor pd : props) {
-			if (!"class".equals(pd.getName())) {
-				jTableBinding.addColumnBinding(BeanProperty.create(pd.getName())).setColumnName(pd.getName())
-						.setEditable(false);
+		PropertyDescriptor[] props;
+		try {
+			props = getProps(clazz);
+			for (PropertyDescriptor pd : props) {
+				if (!"class".equals(pd.getName())) {
+					jTableBinding.addColumnBinding(BeanProperty.create(pd.getName())).setColumnName(pd.getName())
+							.setEditable(false);
+				}
 			}
+		} catch (IntrospectionException e) {
+			e.printStackTrace();
 		}
+		
 		jTableBinding.setEditable(false);
 		jTableBinding.bind();
 	}
@@ -61,7 +89,6 @@ public class DataBindingUtil {
 					hasid = true;
 			}
 		} catch (IntrospectionException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return hasid;
