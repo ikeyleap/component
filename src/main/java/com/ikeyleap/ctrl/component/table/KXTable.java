@@ -20,81 +20,45 @@ public class KXTable extends JComponent {
 	private RowHeaderTable rowLines;
 
 	public KXTable(int numRows, int numColumns) {
-		this.table = new JTable(numRows, numColumns) {
-			@Override
-			public boolean isCellEditable(int row, int column) {
-				return false;
-			}
-
-		};
+		this.table = new JTable(numRows, numColumns);
 		initialize();
 	}
 
 	public KXTable(Object[][] rowData, Object[] columnNames) {
-		this.table = new JTable(rowData, columnNames) {
-			@Override
-			public boolean isCellEditable(int row, int column) {
-				return false;
-			}
-
-		};
+		this.table = new JTable(rowData, columnNames);
 		initialize();
 	}
 
 	public KXTable(TableModel dm, TableColumnModel cm, ListSelectionModel sm) {
-		this.table = new JTable(dm, cm, sm) {
-			@Override
-			public boolean isCellEditable(int row, int column) {
-				return false;
-			}
-
-		};
+		this.table = new JTable(dm, cm, sm);
 		initialize();
 	}
 
 	public KXTable(TableModel dm, TableColumnModel cm) {
-		this.table = new JTable(dm, cm) {
-			@Override
-			public boolean isCellEditable(int row, int column) {
-				return false;
-			}
-
-		};
+		this.table = new JTable(dm, cm);
 		initialize();
 	}
 
 	public KXTable(TableModel dm) {
-		this.table = new JTable(dm) {
-			@Override
-			public boolean isCellEditable(int row, int column) {
-				return false;
-			}
-
-		};
+		this.table = new JTable(dm);
 		initialize();
 	}
 
 	public KXTable() {
-		table = new JTable() {
-			@Override
-			public boolean isCellEditable(int row, int column) {
-				return false;
-			}
-
-		};
+		table = new JTable();
 		initialize();
 	}
 
-//	public KXTable(JTable refTable) {
-//		this.table = new JTable() {
-//			@Override
-//			public boolean isCellEditable(int row, int column) {
-//				return false;
-//			}
-//		};
-//		table = refTable;
-//		initialize();
-//	}
+	// public KXTable(JTable refTable) {
+	// this.table = new JTable() {
+	// @Override
+	// public boolean isCellEditable(int row, int column) {
+	// return false;
+	// }
+	// };
+	// table = refTable;
+	// initialize();
+	// }
 
 	private void initialize() {
 		BorderLayout layout = new BorderLayout();
