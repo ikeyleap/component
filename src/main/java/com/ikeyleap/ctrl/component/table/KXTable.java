@@ -143,4 +143,18 @@ public class KXTable extends JComponent {
 		this.rowLines.setBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null));
 		scrollPane.setRowHeaderView(this.rowLines);
 	}
+
+	/**
+	 * @return the model
+	 */
+	public KXTableModel getModel() {
+		return model;
+	}
+
+	/**
+	 * @param model the model to set
+	 */
+	public void setModel(KXTableModel model) {
+		this.model = model;
+	}
 }
