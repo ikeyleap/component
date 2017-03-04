@@ -147,6 +147,7 @@ public class KXTable extends JComponent {
 	/**
 	 * @return the model
 	 */
+	@SuppressWarnings("rawtypes")
 	public KXTableModel getModel() {
 		return model;
 	}
@@ -154,6 +155,7 @@ public class KXTable extends JComponent {
 	/**
 	 * @param model the model to set
 	 */
+	@SuppressWarnings("rawtypes")
 	public void setModel(KXTableModel model) {
 		this.model = model;
 	}
