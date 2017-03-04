@@ -2,6 +2,9 @@ package com.github.lgooddatepicker.components;
 
 import java.time.*;
 import com.privatejgoodies.forms.layout.FormLayout;
+
+import jiconfont.icons.FontAwesome;
+
 import com.privatejgoodies.forms.factories.CC;
 import com.github.lgooddatepicker.components.DatePickerSettings.DateArea;
 import com.github.lgooddatepicker.optionalusertools.CalendarBorderProperties;
@@ -17,6 +20,7 @@ import com.github.lgooddatepicker.zinternaltools.CalendarSelectionEvent;
 import com.github.lgooddatepicker.zinternaltools.InternalUtilities;
 import com.github.lgooddatepicker.zinternaltools.JIntegerTextField;
 import com.github.lgooddatepicker.zinternaltools.JIntegerTextField.IntegerTextFieldNumberChangeListener;
+import com.ikeyleap.ctrl.component.util.IconUtil;
 import com.github.lgooddatepicker.optionalusertools.CalendarSelectionListener;
 import com.github.lgooddatepicker.zinternaltools.MouseLiberalAdapter;
 import com.github.lgooddatepicker.zinternaltools.HighlightInformation;
@@ -1312,7 +1316,8 @@ public class CalendarPanel extends JPanel {
             ((FormLayout) headerControlsPanel.getLayout()).setColumnGroups(new int[][]{{1, 2, 6, 7}});
 
             //---- buttonPreviousYear ----
-            buttonPreviousYear.setText("<<");
+//            buttonPreviousYear.setText("<<");
+            buttonPreviousYear.setIcon(IconUtil.getIcon(FontAwesome.ANGLE_DOUBLE_LEFT, 16, Color.BLUE));
             buttonPreviousYear.setFocusable(false);
             buttonPreviousYear.setFocusPainted(false);
             buttonPreviousYear.setHorizontalTextPosition(SwingConstants.CENTER);
@@ -1327,7 +1332,8 @@ public class CalendarPanel extends JPanel {
             headerControlsPanel.add(buttonPreviousYear, CC.xy(1, 1));
 
             //---- buttonPreviousMonth ----
-            buttonPreviousMonth.setText(" < ");
+//            buttonPreviousMonth.setText(" < ");
+            buttonPreviousMonth.setIcon(IconUtil.getIcon(FontAwesome.ANGLE_LEFT, 16, Color.BLUE));
             buttonPreviousMonth.setFocusable(false);
             buttonPreviousMonth.setFocusPainted(false);
             buttonPreviousMonth.setHorizontalTextPosition(SwingConstants.CENTER);
@@ -1401,7 +1407,8 @@ public class CalendarPanel extends JPanel {
             headerControlsPanel.add(monthAndYearOuterPanel, CC.xy(4, 1));
 
             //---- buttonNextMonth ----
-            buttonNextMonth.setText(" > ");
+//            buttonNextMonth.setText(" > ");
+            buttonNextMonth.setIcon(IconUtil.getIcon(FontAwesome.ANGLE_RIGHT, 16, Color.BLUE));
             buttonNextMonth.setFocusable(false);
             buttonNextMonth.setFocusPainted(false);
             buttonNextMonth.setHorizontalTextPosition(SwingConstants.CENTER);
@@ -1416,7 +1423,8 @@ public class CalendarPanel extends JPanel {
             headerControlsPanel.add(buttonNextMonth, CC.xy(6, 1));
 
             //---- buttonNextYear ----
-            buttonNextYear.setText(">>");
+//            buttonNextYear.setText(">>");
+            buttonNextYear.setIcon(IconUtil.getIcon(FontAwesome.ANGLE_DOUBLE_RIGHT, 16, Color.BLUE));
             buttonNextYear.setFocusable(false);
             buttonNextYear.setFocusPainted(false);
             buttonNextYear.setHorizontalTextPosition(SwingConstants.CENTER);
