@@ -1,33 +1,46 @@
 package com.github.lgooddatepicker.components;
 
-import com.privatejgoodies.forms.layout.FormLayout;
-import com.privatejgoodies.forms.factories.CC;
-import java.awt.event.*;
-import javax.swing.border.*;
-import com.github.lgooddatepicker.zinternaltools.*;
-import com.github.lgooddatepicker.components.DatePickerSettings.DateArea;
-import com.github.lgooddatepicker.optionalusertools.DateChangeListener;
-import com.github.lgooddatepicker.optionalusertools.PickerUtilities;
-import javax.swing.event.DocumentEvent;
-import javax.swing.event.DocumentListener;
-import java.util.ArrayList;
-import com.github.lgooddatepicker.optionalusertools.DateVetoPolicy;
-import com.github.lgooddatepicker.zinternaltools.CalculateMinimumDateFieldSize;
-import com.github.lgooddatepicker.zinternaltools.CustomPopup.CustomPopupCloseListener;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Insets;
 import java.awt.Rectangle;
 import java.awt.Window;
+import java.awt.event.FocusAdapter;
+import java.awt.event.FocusEvent;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.time.Instant;
 import java.time.LocalDate;
 import java.time.chrono.IsoEra;
+import java.util.ArrayList;
 import java.util.Locale;
+
 import javax.swing.JButton;
 import javax.swing.JComponent;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.SwingUtilities;
+import javax.swing.border.CompoundBorder;
+import javax.swing.border.EmptyBorder;
+import javax.swing.border.MatteBorder;
+import javax.swing.event.DocumentEvent;
+import javax.swing.event.DocumentListener;
+
+import com.github.lgooddatepicker.components.DatePickerSettings.DateArea;
+import com.github.lgooddatepicker.optionalusertools.DateChangeListener;
+import com.github.lgooddatepicker.optionalusertools.DateVetoPolicy;
+import com.github.lgooddatepicker.optionalusertools.PickerUtilities;
+import com.github.lgooddatepicker.zinternaltools.CalculateMinimumDateFieldSize;
+import com.github.lgooddatepicker.zinternaltools.Convert;
+import com.github.lgooddatepicker.zinternaltools.CustomPopup;
+import com.github.lgooddatepicker.zinternaltools.CustomPopup.CustomPopupCloseListener;
+import com.github.lgooddatepicker.zinternaltools.DateChangeEvent;
+import com.github.lgooddatepicker.zinternaltools.InternalUtilities;
+import com.ikeyleap.ctrl.component.util.IconUtil;
+import com.privatejgoodies.forms.factories.CC;
+import com.privatejgoodies.forms.layout.FormLayout;
+
+import jiconfont.icons.FontAwesome;
 
 /**
  * DatePicker, This class implements a date picker GUI component.
@@ -940,7 +953,7 @@ public class DatePicker extends JPanel implements CustomPopupCloseListener {
         add(dateTextField, CC.xy(1, 1));
 
         //---- toggleCalendarButton ----
-        toggleCalendarButton.setText("...");
+        toggleCalendarButton.setIcon(IconUtil.getIcon(FontAwesome.CALENDAR, 16, Color.GRAY));
         toggleCalendarButton.setFocusPainted(false);
         toggleCalendarButton.setFocusable(false);
         toggleCalendarButton.addMouseListener(new MouseAdapter() {
