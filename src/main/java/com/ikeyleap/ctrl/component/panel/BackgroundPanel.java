@@ -1,6 +1,8 @@
 package com.ikeyleap.ctrl.component.panel;
 
 import java.awt.*;
+
+import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 
 /**
@@ -20,6 +22,12 @@ public class BackgroundPanel extends JPanel {
 
 	public BackgroundPanel(Image image) {
 		this.image = image;
+	}
+	
+	public BackgroundPanel(String imaURL) {
+		java.net.URL imgURL = getClass().getResource(imaURL);
+		ImageIcon icon = new ImageIcon(imgURL);
+		this.image = icon.getImage();
 	}
 
 	// 固定背景图片，允许这个JPanel可以在图片上添加其他组件
