@@ -4,14 +4,14 @@ import java.awt.Color;
 import java.awt.Component;
 import java.awt.Dimension;
 
-import javax.swing.JComponent;
 import javax.swing.JLabel;
+import javax.swing.JPanel;
 import javax.swing.SpringLayout;
 import javax.swing.SwingConstants;
 import javax.swing.border.MatteBorder;
 
 @SuppressWarnings("serial")
-public class KXBaseContainers extends JComponent {
+public class KXBaseContainers extends JPanel {
 	private final static double GOLDEN_RATIO = 0.618;
 	private final JLabel KXLabel = new JLabel("");
 	private final Component comp;
@@ -25,6 +25,7 @@ public class KXBaseContainers extends JComponent {
 	}
 
 	private void initialize() {
+		setOpaque(false);
 
 		// Create Layout
 		SpringLayout layout = new SpringLayout();
@@ -35,7 +36,7 @@ public class KXBaseContainers extends JComponent {
 		layout.putConstraint(SpringLayout.SOUTH, this.KXLabel, 0, SpringLayout.SOUTH, this);
 		setLayout(layout);
 		int h = (int) this.comp.getPreferredSize().getHeight();
-		this.KXLabel.setPreferredSize(new Dimension((int) (this.width * (1 - GOLDEN_RATIO)) , h));
+		this.KXLabel.setPreferredSize(new Dimension((int) (this.width * (1 - GOLDEN_RATIO)), h));
 
 		this.KXLabel.setVerticalAlignment(SwingConstants.BOTTOM);
 		this.KXLabel.setBorder(new MatteBorder(0, 0, 1, 0, Color.BLACK));
