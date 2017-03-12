@@ -24,6 +24,13 @@ public class KXBaseContainers<T extends Component> extends JPanel {
 		initialize();
 	}
 
+	public KXBaseContainers(String label, T comp, Component parent) {
+		this.KXLabel.setText(label);
+		this.comp = comp;
+		this.width = parent.getWidth();
+		initialize();
+	}
+
 	private void initialize() {
 		setOpaque(false);
 
