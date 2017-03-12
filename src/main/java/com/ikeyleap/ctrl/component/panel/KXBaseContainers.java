@@ -11,13 +11,13 @@ import javax.swing.SwingConstants;
 import javax.swing.border.MatteBorder;
 
 @SuppressWarnings("serial")
-public class KXBaseContainers extends JPanel {
+public class KXBaseContainers<T extends Component> extends JPanel {
 	private final static double GOLDEN_RATIO = 0.618;
 	private final JLabel KXLabel = new JLabel("");
-	private final Component comp;
+	private final T comp;
 	private int width;
 
-	public KXBaseContainers(JLabel KXLabel, Component comp, Component parent) {
+	public KXBaseContainers(JLabel KXLabel, T comp, Component parent) {
 		this.KXLabel.setText(KXLabel.getText());
 		this.comp = comp;
 		this.width = parent.getWidth();
@@ -45,5 +45,12 @@ public class KXBaseContainers extends JPanel {
 		add(this.comp);
 		// Do layout formatting
 
+	}
+
+	/**
+	 * @return the comp
+	 */
+	public T getComp() {
+		return comp;
 	}
 }
