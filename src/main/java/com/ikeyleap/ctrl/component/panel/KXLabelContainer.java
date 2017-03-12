@@ -6,8 +6,6 @@ import java.awt.Container;
 import java.awt.Dimension;
 import java.awt.Insets;
 import java.awt.LayoutManager;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 
@@ -15,51 +13,36 @@ import javax.swing.JComponent;
 import javax.swing.JLabel;
 import javax.swing.border.MatteBorder;
 
+@SuppressWarnings("serial")
 public class KXLabelContainer extends JComponent {
-	private static final long serialVersionUID = -7126196734016811212L;
-	private static final String PROPERTY_BOUND_LABEL = "boundLabel";
-	private static final String PROPERTY_BOUND_LABEL_ALIGNMENT = "boundLabelAlignment";
-	private static final String PROPERTY_BOUND_LABEL_LENGTH = "boundLabelLength";
-	private static final String PROPERTY_BOUND_LABEL_TEXT = "boundLabelText";
-	private static final String PROPERTY_BOUND_LABEL_UNDERLINE = "boundLabelUnderLine";
-	private static final String PROPERTY_BOUND_EDITOR = "boundEditor";
 	private JLabel label;
 	private JComponent editor;
-//	private JButton button;
-//	private boolean buttonVisible = false;
-//	protected KXLabelContainerDialog labelContainerDialog;
-//	private Image buttonIcon = KDResourceManager.getImageOfRapid("labelcontainer_button.gif");
-//	private Image buttonOverIcon = KDResourceManager.getImageOfRapid("labelcontainer_button_01.gif");
 
 	private int labelAlignment = 7;
 	private int labelLength = -1;
 
 	private PropertyChangeListener propertyChangeListener = new PropertyChangeHandler();
-	private LabelContainerMouseListener mouseListener = new LabelContainerMouseListener();
 
-	public KXLabelContainer()
-   {
-     this("", null);
-   }
+	public KXLabelContainer() {
+		this("", null);
+	}
 
-	public KXLabelContainer(String labelText)
-   {
-     this(labelText, null);
-   }
+	public KXLabelContainer(String labelText) {
+		this(labelText, null);
+	}
 
-	public KXLabelContainer(JComponent editor)
-   {
-     this("", editor);
-   }
+	public KXLabelContainer(JComponent editor) {
+		this("", editor);
+	}
 
-	public KXLabelContainer(String labelText, JComponent editor)
-   {
-     setLayout(new CompositeLayout());
-     setBoundLabelText(labelText);
-     setBoundEditor(editor);
- 
-     install();
-   }
+	public KXLabelContainer(String labelText, JComponent editor) {
+		setLayout(new CompositeLayout());
+		setBoundLabelText(labelText);
+		setBoundEditor(editor);
+		setBoundLabelUnderline(false);
+
+		install();
+	}
 
 	private void install() {
 		installDefault();
@@ -72,13 +55,9 @@ public class KXLabelContainer extends JComponent {
 
 	private void installComponent() {
 		removeAll();
-//		this.button = createButton();
 		if (getBoundLabel() != null) {
 			add(getBoundLabel(), "label");
 		}
-//		if (getBoundButton() != null) {
-//			add(getBoundButton(), "button");
-//		}
 		if (getBoundEditor() != null) {
 			add(getBoundEditor(), "editor");
 		}
@@ -86,7 +65,6 @@ public class KXLabelContainer extends JComponent {
 
 	private void installListener() {
 		addPropertyChangeListener(this.propertyChangeListener);
-//		this.button.addMouseListener(this.mouseListener);
 	}
 
 	public void setBoundLabel(JLabel label) {
@@ -166,10 +144,6 @@ public class KXLabelContainer extends JComponent {
 		}
 	}
 
-//	public Color getUnderlineColor() {
-//		return this.label.getBorder();
-//	}
-
 	public boolean isBoundLabelUnderline() {
 		if ((this.label != null) && ((this.label instanceof JLabel))) {
 			return true;
@@ -183,54 +157,15 @@ public class KXLabelContainer extends JComponent {
 		if (old != editor) {
 			this.editor = editor;
 			firePropertyChange("boundEditor", old, editor);
-//			if ((editor instanceof IBoundLabelControl)) {
-//				((IBoundLabelControl) editor).setLabelContainer(this);
-//			}
+			// if ((editor instanceof IBoundLabelControl)) {
+			// ((IBoundLabelControl) editor).setLabelContainer(this);
+			// }
 		}
 	}
-
-//	private JButton createButton() {
-//		JButton btn = new JButton();
-//		btn.setIcon(new ImageIcon(this.buttonIcon));
-////		btn.setBorder(KingdeeBorders.createLabelContainerButtonBorder());
-//
-//		btn.setBackground(getBoundLabel().getBackground());
-//		btn.setFocusable(false);
-//		return btn;
-//	}
 
 	public JComponent getBoundEditor() {
 		return this.editor;
 	}
-
-//	public JButton getBoundButton() {
-//		return this.button;
-//	}
-//
-//	public void setButtonIcon(Image icon) {
-//		this.button.setIcon(new ImageIcon(icon));
-//		this.buttonIcon = icon;
-//	}
-//
-//	public void setButtonOverIcon(Image icon) {
-//		this.buttonOverIcon = icon;
-//	}
-
-//	public boolean isButtonVisible() {
-//		return this.buttonVisible;
-//	}
-//
-//	public void setButtonVisible(boolean buttonVisible) {
-//		this.buttonVisible = buttonVisible;
-//	}
-
-//	public void setLabelContainerDialog(KXLabelContainerDialog dialog) {
-//		this.labelContainerDialog = dialog;
-//	}
-//
-//	public KXLabelContainerDialog getLabelContainerDialog() {
-//		return this.labelContainerDialog;
-//	}
 
 	private void doChangeAlignment() {
 		switch (getBoundLabelAlignment()) {
@@ -275,45 +210,6 @@ public class KXLabelContainer extends JComponent {
 			comp.setEnabled(enabled);
 	}
 
-	protected void popupDialog() {
-//		if (this.labelContainerDialog == null) {
-//			this.labelContainerDialog = new DefaultLabelContainerDialog(null);
-//		}
-
-//		this.labelContainerDialog.show();
-	}
-
-//	private class DefaultLabelContainerDialog implements KXLabelContainerDialog {
-//		private DefaultLabelContainerDialog() {
-//		}
-//
-//		public void show() {
-//		}
-//	}
-
-	private class LabelContainerMouseListener implements MouseListener {
-		private LabelContainerMouseListener() {
-		}
-
-		public void mouseClicked(MouseEvent e) {
-			KXLabelContainer.this.popupDialog();
-		}
-
-		public void mousePressed(MouseEvent e) {
-		}
-
-		public void mouseReleased(MouseEvent e) {
-		}
-
-		public void mouseEntered(MouseEvent e) {
-//			KXLabelContainer.this.button.setIcon(new ImageIcon(KXLabelContainer.this.buttonOverIcon));
-		}
-
-		public void mouseExited(MouseEvent e) {
-//			KXLabelContainer.this.button.setIcon(new ImageIcon(KXLabelContainer.this.buttonIcon));
-		}
-	}
-
 	private class PropertyChangeHandler implements PropertyChangeListener {
 		private PropertyChangeHandler() {
 		}
@@ -332,12 +228,9 @@ public class KXLabelContainer extends JComponent {
 	}
 
 	private class CompositeLayout implements LayoutManager {
-		public static final String LABEL = "label";
-		public static final String EDITOR = "editor";
-		public static final String BUTTON = "button";
+		private final static double GOLDEN_RATIO = 0.618;
 		private JComponent lab = null;
 		private JComponent edt = null;
-		private JComponent btn = null;
 
 		private CompositeLayout() {
 		}
@@ -347,8 +240,6 @@ public class KXLabelContainer extends JComponent {
 				this.lab = ((JComponent) comp);
 			} else if (name.equals("editor")) {
 				this.edt = ((JComponent) comp);
-			} else if (name.equals("button")) {
-				this.btn = ((JComponent) comp);
 			}
 		}
 
@@ -357,16 +248,13 @@ public class KXLabelContainer extends JComponent {
 				this.lab = null;
 			} else if (comp.equals(this.edt)) {
 				this.edt = null;
-			} else if (comp.equals(this.btn)) {
-				this.btn = null;
 			}
 		}
 
 		public Dimension preferredLayoutSize(Container parent) {
 			Insets insets = parent.getInsets();
 			Dimension ediDim = getEdtDim();
-			Dimension labDim = getLabDim();
-			Dimension btnDim = getBtnDim();
+			Dimension labDim = getLabDim(parent);
 
 			int w = insets.left + insets.right;
 			int h = insets.top + insets.bottom;
@@ -381,7 +269,6 @@ public class KXLabelContainer extends JComponent {
 			default:
 				w += ediDim.width + labDim.width;
 				h += Math.max(ediDim.height, labDim.height);
-				h = Math.max(h, btnDim.height);
 			}
 			return new Dimension(w, h);
 		}
@@ -394,27 +281,13 @@ public class KXLabelContainer extends JComponent {
 			Insets insets = parent.getInsets();
 			Dimension pDim = parent.getSize();
 
-			Dimension labDim = getLabDim();
-			Dimension btnDim = getBtnDim();
+			Dimension labDim = getLabDim(parent);
 
 			int w = pDim.width - insets.left - insets.right;
 			int h = pDim.height - insets.top - insets.bottom;
 
 			int tempX = insets.left;
 			int tempY = insets.top;
-
-//			if ((!isCompositeLabelVisible()) && (!isCompositeEditorVisible())
-//					&& (!KXLabelContainer.this.isButtonVisible())) {
-//				return;
-//			}
-//			if ((!isCompositeLabelVisible()) && (!KXLabelContainer.this.isButtonVisible())) {
-//				this.edt.setBounds(tempX, tempY, w, h);
-//				return;
-//			}
-//			if ((!isCompositeEditorVisible()) && (!KXLabelContainer.this.isButtonVisible())) {
-//				this.lab.setBounds(tempX, tempY, w, h);
-//				return;
-//			}
 
 			int tempW = 0;
 			int tempH = 0;
@@ -446,13 +319,8 @@ public class KXLabelContainer extends JComponent {
 			default:
 				tempH = h;
 				tempW = Math.min(w, labDim.width);
-				tempW =  tempW;
-				this.lab.setBounds(tempX, tempY, tempW, tempH);
 
-//				if (KXLabelContainer.this.isButtonVisible()) {
-//					tempX += tempW;
-//					this.btn.setBounds(tempX, tempY, btnDim.width, tempH);
-//				}
+				this.lab.setBounds(tempX, tempY, tempW, tempH);
 
 				tempX += tempW;
 				tempW = Math.max(w - labDim.width, 0);
@@ -460,7 +328,7 @@ public class KXLabelContainer extends JComponent {
 			}
 		}
 
-		private Dimension getLabDim() {
+		private Dimension getLabDim(Container parent) {
 			Dimension labDim = new Dimension(0, 0);
 			if (this.lab != null) {
 				Dimension labPrfDim = this.lab.getPreferredSize();
@@ -469,6 +337,10 @@ public class KXLabelContainer extends JComponent {
 						|| (KXLabelContainer.this.getBoundLabelAlignment() == 7)) {
 					int labW = KXLabelContainer.this.getBoundLabelLength() == -1 ? labPrfDim.width
 							: KXLabelContainer.this.getBoundLabelLength();
+					int temp = (int) (parent.getWidth() * (1 - GOLDEN_RATIO));
+					if (labPrfDim.width < temp) {
+						labW = temp;
+					}
 
 					int labH = labPrfDim.height;
 					labDim = new Dimension(labW, labH);
@@ -490,34 +362,6 @@ public class KXLabelContainer extends JComponent {
 			}
 
 			return this.edt.getPreferredSize();
-		}
-
-		private Dimension getBtnDim() {
-			if (this.btn == null) {
-				return new Dimension(0, 0);
-			}
-
-			return this.btn.getPreferredSize();
-		}
-
-		private boolean isCompositeLabelVisible() {
-			if (this.lab == null) {
-				return false;
-			}
-			if ((KXLabelContainer.this.getBoundLabelText().length() == 0)
-					&& (KXLabelContainer.this.getBoundLabelLength() <= 0)) {
-				return false;
-			}
-
-			return true;
-		}
-
-		private boolean isCompositeEditorVisible() {
-			if (this.edt == null) {
-				return false;
-			}
-
-			return true;
 		}
 	}
 }
