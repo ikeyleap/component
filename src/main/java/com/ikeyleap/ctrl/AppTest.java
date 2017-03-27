@@ -1,25 +1,26 @@
 package com.ikeyleap.ctrl;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.EventQueue;
+import java.awt.FlowLayout;
+import java.awt.SystemColor;
 import java.util.ArrayList;
 import java.util.List;
 
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JSplitPane;
+import javax.swing.JTable;
+import javax.swing.SwingConstants;
+import javax.swing.UIManager;
 import javax.swing.border.EmptyBorder;
+import javax.swing.border.MatteBorder;
 
 import com.ikeyleap.ctrl.component.promptbox.JPromptbox;
 import com.ikeyleap.ctrl.component.table.KXTable;
-import java.awt.Dimension;
-import java.awt.FlowLayout;
-import javax.swing.JLabel;
-import javax.swing.border.MatteBorder;
-import java.awt.Color;
-import javax.swing.SwingConstants;
-import javax.swing.JSplitPane;
-import java.awt.SystemColor;
-import javax.swing.UIManager;
 
 @SuppressWarnings("serial")
 public class AppTest extends JFrame {
@@ -89,7 +90,7 @@ public class AppTest extends JFrame {
 		Object[][] cellData = { { "row1-col1", "row1-col2" }, { "row2-col1", "row2-col2" } };
 		String[] columnNames = { "col1", "col2" };
 
-		table = new KXTable(cellData, columnNames);
+		table = new KXTable(new JTable(cellData, columnNames));
 		panel.add(table, BorderLayout.CENTER);
 		this.contentPane.add(this.panel);
 		

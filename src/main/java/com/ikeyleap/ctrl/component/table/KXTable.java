@@ -6,9 +6,8 @@ import javax.swing.JComponent;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.ListSelectionModel;
+import javax.swing.border.Border;
 import javax.swing.border.EtchedBorder;
-import javax.swing.table.TableColumnModel;
-import javax.swing.table.TableModel;
 
 import com.ikeyleap.ctrl.component.KXTableModel;
 import com.ikeyleap.ctrl.component.ext.RowHeaderTable;
@@ -16,42 +15,26 @@ import com.ikeyleap.ctrl.component.util.DataBindingUtil;
 
 @SuppressWarnings("serial")
 public class KXTable extends JComponent {
-	private final static int columnWidth = 40;
+	private final BorderLayout layout = new BorderLayout();
+	private final int autoResizeMode = JTable.AUTO_RESIZE_OFF;
+	private Border rowLinesBorder = new EtchedBorder(EtchedBorder.LOWERED, null, null);
+	
+	private int selectionMode = ListSelectionModel.SINGLE_SELECTION;
+	private boolean isShowGrid = false;
 	private JScrollPane scrollPane;
 	private JTable table;
 	private RowHeaderTable rowLines;
 
 	@SuppressWarnings("rawtypes")
 	private KXTableModel model;
-
-	public KXTable(int numRows, int numColumns) {
-		this.table = new JTable(numRows, numColumns);
-		initialize();
-	}
-
-	public KXTable(Object[][] rowData, Object[] columnNames) {
-		this.table = new JTable(rowData, columnNames);
-		initialize();
-	}
-
-	public KXTable(TableModel dm, TableColumnModel cm, ListSelectionModel sm) {
-		this.table = new JTable(dm, cm, sm);
-		initialize();
-	}
-
-	public KXTable(TableModel dm, TableColumnModel cm) {
-		this.table = new JTable(dm, cm);
-		initialize();
-	}
-
-	public KXTable(TableModel dm) {
-		this.table = new JTable(dm);
-		initialize();
-	}
-
+	
 	public KXTable() {
-		table = new JTable();
-		initialize();
+		this(new JTable());
+	}
+	
+	public KXTable(JTable table) {
+		this.table = table;
+		init();
 	}
 
 	@SuppressWarnings("rawtypes")
@@ -59,38 +42,30 @@ public class KXTable extends JComponent {
 		table = new JTable();
 		this.model = model;
 		DataBindingUtil.initDataBindings(model, clazz, table);
-		initialize();
+		init();
 	}
-
-	private void initialize() {
-		BorderLayout layout = new BorderLayout();
+	
+	private void initRowLines() {
+		rowLines = new RowHeaderTable(table);
+		scrollPane.setRowHeaderView(rowLines);
+		rowLines.setShowGrid(isShowGrid);
+		rowLines.setBorder(rowLinesBorder);
+	}
+	
+	private void initTable() {
+		table.setSelectionMode(selectionMode);
+		table.setAutoResizeMode(autoResizeMode);
+	}
+	
+	private void init() {
 		setLayout(layout);
-
-		table.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-		
 		scrollPane = new JScrollPane(table);
-		table.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
-		this.rowLines = new RowHeaderTable(table, columnWidth);
-		this.rowLines.setShowGrid(false);
-		this.rowLines.setBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null));
-		scrollPane.setRowHeaderView(this.rowLines);
 		add(scrollPane, BorderLayout.CENTER);
+
+		initTable();
+		initRowLines();
 	}
 
-	/**
-	 * @return the scrollPane
-	 */
-	public JScrollPane getScrollPane() {
-		return scrollPane;
-	}
-
-	/**
-	 * @param scrollPane
-	 *            the scrollPane to set
-	 */
-	public void setScrollPane(JScrollPane scrollPane) {
-		this.scrollPane = scrollPane;
-	}
 
 	/**
 	 * @return the table
