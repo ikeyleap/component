@@ -11,9 +11,10 @@ import javax.swing.border.EtchedBorder;
 
 import com.ikeyleap.ctrl.component.KXTableModel;
 import com.ikeyleap.ctrl.component.ext.RowHeaderTable;
+import com.ikeyleap.ctrl.component.util.DataBindingUtil;
 
 @SuppressWarnings("serial")
-public class KXTable extends JComponent {
+public class KXBeanTable extends JComponent {
 	private final BorderLayout layout = new BorderLayout();
 	private final int autoResizeMode = JTable.AUTO_RESIZE_OFF;
 	private final Border rowLinesBorder = new EtchedBorder(EtchedBorder.LOWERED, null, null);
@@ -27,12 +28,20 @@ public class KXTable extends JComponent {
 	@SuppressWarnings("rawtypes")
 	private KXTableModel model;
 	
-	public KXTable() {
+	public KXBeanTable() {
 		this(new JTable());
 	}
 	
-	public KXTable(JTable table) {
+	public KXBeanTable(JTable table) {
 		this.table = table;
+		init();
+	}
+
+	@SuppressWarnings("rawtypes")
+	public KXBeanTable(KXTableModel model, Class clazz) {
+		table = new JTable();
+		this.model = model;
+		DataBindingUtil.initDataBindings(model, clazz, table);
 		init();
 	}
 	

@@ -13,14 +13,14 @@ import javax.swing.JToolBar;
 import javax.swing.border.EmptyBorder;
 
 import com.ikeyleap.ctrl.component.KXTableModel;
-import com.ikeyleap.ctrl.component.table.KXTable;
+import com.ikeyleap.ctrl.component.table.KXBeanTable;
 
 @SuppressWarnings("serial")
 public class BindTable extends JFrame {
 
 	private JPanel contentPane;
 	public JScrollPane scrollPane;
-	public KXTable table;
+	public KXBeanTable table;
 
 	public JToolBar toolBar;
 	public JButton btnAddButton;
@@ -73,7 +73,7 @@ public class BindTable extends JFrame {
 
 		this.scrollPane = new JScrollPane();
 
-		this.table = new KXTable(model, Person.class);
+		this.table = new KXBeanTable(model, Person.class);
 		this.contentPane.add(this.table, BorderLayout.CENTER);
 
 		this.toolBar = new JToolBar();
