@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * @author lobas_av
+ * @author lipeng
  * 
  */
 public class KXTableModel<T> extends AbstractModelObject {
