@@ -9,7 +9,6 @@ import javax.swing.ListSelectionModel;
 import javax.swing.border.Border;
 import javax.swing.border.EtchedBorder;
 
-import com.ikeyleap.ctrl.component.KXTableModel;
 import com.ikeyleap.ctrl.component.ext.RowHeaderTable;
 
 @SuppressWarnings("serial")
@@ -17,37 +16,34 @@ public class KXTable extends JComponent {
 	private final BorderLayout layout = new BorderLayout();
 	private final int autoResizeMode = JTable.AUTO_RESIZE_OFF;
 	private final Border rowLinesBorder = new EtchedBorder(EtchedBorder.LOWERED, null, null);
-	
+
 	private int selectionMode = ListSelectionModel.SINGLE_SELECTION;
 	private boolean isShowGrid = false;
 	private JScrollPane scrollPane;
 	private JTable table;
 	private RowHeaderTable rowLines;
 
-	@SuppressWarnings("rawtypes")
-	private KXTableModel model;
-	
 	public KXTable() {
 		this(new JTable());
 	}
-	
+
 	public KXTable(JTable table) {
 		this.table = table;
 		init();
 	}
-	
+
 	private void initRowLines() {
 		rowLines = new RowHeaderTable(table);
 		scrollPane.setRowHeaderView(rowLines);
 		rowLines.setShowGrid(isShowGrid);
 		rowLines.setBorder(rowLinesBorder);
 	}
-	
+
 	private void initTable() {
 		table.setSelectionMode(selectionMode);
 		table.setAutoResizeMode(autoResizeMode);
 	}
-	
+
 	private void init() {
 		setLayout(layout);
 		scrollPane = new JScrollPane(table);
@@ -56,7 +52,6 @@ public class KXTable extends JComponent {
 		initTable();
 		initRowLines();
 	}
-
 
 	/**
 	 * @return the table
@@ -88,41 +83,4 @@ public class KXTable extends JComponent {
 		this.rowLines = rowLines;
 	}
 
-	@SuppressWarnings("unchecked")
-	public void addRow(Object o) {
-		model.addObject(o);
-		refresh();
-	}
-
-	@SuppressWarnings("unchecked")
-	public void delRow() {
-		if (table.getSelectedRow() >= 0) {
-			Object o = model.getDataList().get(table.getSelectedRow());
-			model.removeObject(o);
-			refresh();
-		}
-	}
-
-	private void refresh() {
-		rowLines = new RowHeaderTable(table);
-		rowLines.setShowGrid(isShowGrid);
-		rowLines.setBorder(rowLinesBorder);
-		scrollPane.setRowHeaderView(rowLines);
-	}
-
-	/**
-	 * @return the model
-	 */
-	@SuppressWarnings("rawtypes")
-	public KXTableModel getModel() {
-		return model;
-	}
-
-	/**
-	 * @param model the model to set
-	 */
-	@SuppressWarnings("rawtypes")
-	public void setModel(KXTableModel model) {
-		this.model = model;
-	}
 }
