@@ -4,6 +4,10 @@ import com.github.lgooddatepicker.tableeditors.DateTableEditor;
 import com.github.lgooddatepicker.tableeditors.DateTimeTableEditor;
 import com.github.lgooddatepicker.tableeditors.TimeTableEditor;
 import com.github.lgooddatepicker.zinternaltools.InternalUtilities;
+import com.ikeyleap.ctrl.component.util.IconUtil;
+
+import jiconfont.icons.FontAwesome;
+
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.GridLayout;
@@ -11,6 +15,8 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.ArrayList;
+
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
@@ -78,6 +84,9 @@ public class TableEditorsDemo extends JPanel {
         // If you did, it would be immediately obvious because the cells would not render properly.
         table.setDefaultRenderer(LocalDate.class, new DateTableEditor());
         DateTableEditor dateEdit = new DateTableEditor();
+        JButton toggleCalendarButton = dateEdit.getDatePicker().getComponentToggleCalendarButton();
+        toggleCalendarButton.setText("");
+        toggleCalendarButton.setIcon(IconUtil.getIcon(FontAwesome.CALENDAR));
         dateEdit.clickCountToEdit = clickCountToEdit;
         table.setDefaultEditor(LocalDate.class, dateEdit);
 
