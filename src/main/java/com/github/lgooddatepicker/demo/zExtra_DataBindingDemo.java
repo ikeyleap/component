@@ -22,6 +22,7 @@ package com.github.lgooddatepicker.demo;
  * properties. The binding tab allows you to set up or change any automatic data binding between the
  * components.
  */
+@SuppressWarnings("serial")
 public class zExtra_DataBindingDemo extends javax.swing.JFrame {
 
     // Uncomment the class to run the beansbinding demo. 
@@ -34,9 +35,9 @@ public class zExtra_DataBindingDemo extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }
 
-    @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
-    private void initComponents() {
+    @SuppressWarnings("rawtypes")
+	private void initComponents() {
         bindingGroup = new org.jdesktop.beansbinding.BindingGroup();
 
         calendarPanel_r4_1 = new com.github.lgooddatepicker.components.CalendarPanel();
@@ -190,7 +191,6 @@ public class zExtra_DataBindingDemo extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jTextField_r1_1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField_r1_1ActionPerformed
-        // TODO add your handling code here:
     }//GEN-LAST:event_jTextField_r1_1ActionPerformed
 
     // main.    

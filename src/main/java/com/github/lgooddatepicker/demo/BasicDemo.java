@@ -23,6 +23,7 @@ import javax.swing.SwingUtilities;
  * For a more extensive demonstration of all library components and their various optional settings,
  * see "FullDemo.java".
  */
+@SuppressWarnings("serial")
 public class BasicDemo extends JFrame {
 
     /**
@@ -51,7 +52,8 @@ public class BasicDemo extends JFrame {
     /**
      * initializeComponents, This creates the user interface for the basic demo.
      */
-    private void initializeComponents() {
+    @SuppressWarnings("unused")
+	private void initializeComponents() {
         // Set up the form which holds the date picker components. 
         setTitle("LGoodDatePicker Basic Demo " + InternalUtilities.getProjectVersionString());
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

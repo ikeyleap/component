@@ -43,6 +43,7 @@ import javax.swing.table.TableModel;
  * // The cells in column 0 will now use a date picker for editing and rendering values.
  * </code>
  */
+@SuppressWarnings("serial")
 public class TableEditorsDemo extends JPanel {
 
     /**
@@ -161,7 +162,8 @@ public class TableEditorsDemo extends JPanel {
      * values are found in the sampled rows, then the "generic editor" (the string editor) will be
      * used for that column.
      */
-    private void zSetAllColumnEditorsAndRenderers(JTable table) {
+    @SuppressWarnings({ "rawtypes", "unused" })
+	private void zSetAllColumnEditorsAndRenderers(JTable table) {
         // These variables decide how many samples to look at in each column.
         int maxStartRowsToRead = 30;
         int maxBulkRowsToRead = 70;
@@ -280,7 +282,8 @@ public class TableEditorsDemo extends JPanel {
          * using a different method to determine the specific data type of each column. See also:
          * zSetColumnEditors().
          */
-        @Override
+        @SuppressWarnings({ "unchecked", "rawtypes" })
+		@Override
         public Class getColumnClass(int columnIndex) {
             return Object.class;
         }
