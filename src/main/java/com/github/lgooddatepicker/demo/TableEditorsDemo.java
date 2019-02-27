@@ -1,13 +1,5 @@
 package com.github.lgooddatepicker.demo;
 
-import com.github.lgooddatepicker.tableeditors.DateTableEditor;
-import com.github.lgooddatepicker.tableeditors.DateTimeTableEditor;
-import com.github.lgooddatepicker.tableeditors.TimeTableEditor;
-import com.github.lgooddatepicker.zinternaltools.InternalUtilities;
-import com.ikeyleap.ctrl.component.util.IconUtil;
-
-import jiconfont.icons.FontAwesome;
-
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.GridLayout;
@@ -24,6 +16,14 @@ import javax.swing.JTable;
 import javax.swing.table.AbstractTableModel;
 import javax.swing.table.TableColumn;
 import javax.swing.table.TableModel;
+
+import com.github.lgooddatepicker.tableeditors.DateTableEditor;
+import com.github.lgooddatepicker.tableeditors.DateTimeTableEditor;
+import com.github.lgooddatepicker.tableeditors.TimeTableEditor;
+import com.github.lgooddatepicker.zinternaltools.InternalUtilities;
+
+import jiconfont.icons.FontAwesome;
+import jiconfont.swing.IconFontSwing;
 
 /**
  * TableEditorsDemo, This class demonstrates how to use the picker classes inside of the cells of a
@@ -86,7 +86,7 @@ public class TableEditorsDemo extends JPanel {
         DateTableEditor dateEdit = new DateTableEditor();
         JButton toggleCalendarButton = dateEdit.getDatePicker().getComponentToggleCalendarButton();
         toggleCalendarButton.setText("");
-        toggleCalendarButton.setIcon(IconUtil.getIcon(FontAwesome.CALENDAR));
+        toggleCalendarButton.setIcon(IconFontSwing.buildIcon(FontAwesome.CALENDAR, 16));
         dateEdit.clickCountToEdit = clickCountToEdit;
         table.setDefaultEditor(LocalDate.class, dateEdit);
 

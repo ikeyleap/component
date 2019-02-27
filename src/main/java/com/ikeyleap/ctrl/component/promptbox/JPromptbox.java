@@ -1,5 +1,6 @@
 package com.ikeyleap.ctrl.component.promptbox;
 
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -24,9 +25,9 @@ import org.jdesktop.beansbinding.Bindings;
 import org.jdesktop.beansbinding.ELProperty;
 
 import com.ikeyleap.ctrl.component.util.DataBindingUtil;
-import com.ikeyleap.ctrl.component.util.IconUtil;
 
 import jiconfont.icons.FontAwesome;
+import jiconfont.swing.IconFontSwing;
 
 @SuppressWarnings("serial")
 public class JPromptbox extends JComponent implements Promptbox {
@@ -123,6 +124,7 @@ public class JPromptbox extends JComponent implements Promptbox {
 	}
 
 	private void initialize() {
+		IconFontSwing.register(FontAwesome.getIconFont());
 
 		// Create Layout
 		SpringLayout layout = new SpringLayout();
@@ -145,7 +147,7 @@ public class JPromptbox extends JComponent implements Promptbox {
 			}
 		});
 		button.setFocusable(true);
-		button.setIcon(IconUtil.getIcon(FontAwesome.SEARCH, 12));
+		button.setIcon(IconFontSwing.buildIcon(FontAwesome.SEARCH, 12, new Color(0, 128, 0)));
 		add(button);
 		layout.putConstraint(SpringLayout.WEST, button, 0, SpringLayout.EAST, formattedTextField);
 		layout.putConstraint(SpringLayout.EAST, this, 0, SpringLayout.EAST, button);

@@ -1,6 +1,7 @@
 package com.ikeyleap.ctrl.component.promptbox;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -28,9 +29,9 @@ import org.jdesktop.swingbinding.SwingBindings;
 
 import com.ikeyleap.ctrl.component.ext.RowHeaderTable;
 import com.ikeyleap.ctrl.component.util.DataBindingUtil;
-import com.ikeyleap.ctrl.component.util.IconUtil;
 
 import jiconfont.icons.FontAwesome;
+import jiconfont.swing.IconFontSwing;
 
 public class ShowTable extends JDialog {
 
@@ -115,6 +116,7 @@ public class ShowTable extends JDialog {
 
 	@SuppressWarnings("unchecked")
 	private void initialize() {
+		IconFontSwing.register(FontAwesome.getIconFont());
 		setBounds(100, 100, 450, 300);
 		getContentPane().setLayout(new BorderLayout());
 		this.contentPanel.setBorder(null);
@@ -169,7 +171,7 @@ public class ShowTable extends JDialog {
 		JButton btnFilterButton = new JButton("");
 		btnFilterButton.setBackground(UIManager.getColor("Button.background"));
 		btnFilterButton.setToolTipText("过滤");
-		btnFilterButton.setIcon(IconUtil.getIcon(FontAwesome.FILTER, 12));
+		btnFilterButton.setIcon(IconFontSwing.buildIcon(FontAwesome.FILTER, 16, new Color(0, 128, 0)));
 		btnFilterButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				refreshTable();

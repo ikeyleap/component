@@ -10,6 +10,12 @@ import jiconfont.IconCode;
 import jiconfont.icons.FontAwesome;
 import jiconfont.swing.IconFontSwing;
 
+/**
+ * 推荐使用IconFontSwing 方法
+ * @author lipeng
+ *
+ */
+@Deprecated
 public class IconUtil {
 
 	public static ImageIcon scale(ImageIcon icon, int width, int height) {
