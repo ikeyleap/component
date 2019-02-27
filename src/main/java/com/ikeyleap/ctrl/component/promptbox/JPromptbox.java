@@ -24,16 +24,25 @@ import org.jdesktop.beansbinding.BeanProperty;
 import org.jdesktop.beansbinding.Bindings;
 import org.jdesktop.beansbinding.ELProperty;
 
-import com.ikeyleap.ctrl.component.util.DataBindingUtil;
-
+import cn.hutool.core.bean.BeanUtil;
 import jiconfont.icons.FontAwesome;
 import jiconfont.swing.IconFontSwing;
 
 @SuppressWarnings("serial")
 public class JPromptbox extends JComponent implements Promptbox {
-	
+
 	private JFormattedTextField formattedTextField;
 	private JButton button;
+
+	private Object value;
+
+	public Object getValue() {
+		return value;
+	}
+
+	public void setValue(Object value) {
+		this.value = value;
+	}
 
 	private JDialog dialog;
 
@@ -54,8 +63,7 @@ public class JPromptbox extends JComponent implements Promptbox {
 	}
 
 	/**
-	 * @param dataList
-	 *            the dataList to set
+	 * @param dataList the dataList to set
 	 */
 	@SuppressWarnings("rawtypes")
 	public void setDataList(List dataList) {
@@ -89,8 +97,7 @@ public class JPromptbox extends JComponent implements Promptbox {
 	}
 
 	/**
-	 * @param formattedTextField
-	 *            the formattedTextField to set
+	 * @param formattedTextField the formattedTextField to set
 	 */
 	public void setFormattedTextField(JFormattedTextField formattedTextField) {
 		this.formattedTextField = formattedTextField;
@@ -104,8 +111,7 @@ public class JPromptbox extends JComponent implements Promptbox {
 	}
 
 	/**
-	 * @param selectedElement
-	 *            the selectedElement to set
+	 * @param selectedElement the selectedElement to set
 	 */
 	public void setSelectedElement(Object selectedElement) {
 		Object oldElement = selectedElement;
@@ -193,6 +199,7 @@ public class JPromptbox extends JComponent implements Promptbox {
 
 		@Override
 		public String valueToString(Object value) throws ParseException {
+			setValue(value);
 			String result = "";
 			if (value != null) {
 
@@ -201,7 +208,7 @@ public class JPromptbox extends JComponent implements Promptbox {
 				for (int i = 0; i < a.length; i++) {
 					String display = (String) a[i];
 					try {
-						s[i] = DataBindingUtil.getProperty(value, display);
+						s[i] = BeanUtil.getFieldValue(value, display).toString();
 					} catch (Exception e) {
 						e.printStackTrace();
 					}
