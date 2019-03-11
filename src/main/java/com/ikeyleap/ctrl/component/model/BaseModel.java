@@ -10,6 +10,8 @@ package com.ikeyleap.ctrl.component.model;
 
 import java.util.Date;
 
+import cn.hutool.core.util.IdUtil;
+
 /**
  * 所有entity类的超类. 
  * 
@@ -28,6 +30,12 @@ public abstract class BaseModel extends IdModel {
 	
 	
 	
+	public BaseModel() {
+		setCreateTime(new Date());
+		setLastUpdateTime(new Date());
+		setId(IdUtil.simpleUUID());
+	}
+
 	public String getRemarks() {
 		return remarks;
 	}
