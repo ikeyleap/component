@@ -23,13 +23,11 @@
 			<scope>test</scope>
 		</dependency>
 		<!-- https://mvnrepository.com/artifact/org.jdesktop/beansbinding -->
-		<!-- https://mvnrepository.com/artifact/it.tidalwave.betterbeansbinding/betterbeansbinding-swingbinding -->
 		<dependency>
-			<groupId>it.tidalwave.betterbeansbinding</groupId>
-			<artifactId>betterbeansbinding-swingbinding</artifactId>
-			<version>1.3.0</version>
+			<groupId>org.jdesktop</groupId>
+			<artifactId>beansbinding</artifactId>
+			<version>1.2.1</version>
 		</dependency>
-
 		<dependency>
 			<groupId>com.github.jiconfont</groupId>
 			<artifactId>jiconfont-swing</artifactId>
