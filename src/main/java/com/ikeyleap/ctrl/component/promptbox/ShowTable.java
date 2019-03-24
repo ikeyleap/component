@@ -13,11 +13,11 @@ import java.util.List;
 
 import javax.swing.JButton;
 import javax.swing.JDialog;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
-import javax.swing.JToolBar;
-import javax.swing.UIManager;
+import javax.swing.JTextField;
 import javax.swing.border.BevelBorder;
 import javax.swing.border.SoftBevelBorder;
 import javax.swing.table.DefaultTableModel;
@@ -27,9 +27,16 @@ import org.jdesktop.beansbinding.BeanProperty;
 import org.jdesktop.swingbinding.JTableBinding;
 import org.jdesktop.swingbinding.SwingBindings;
 
+import com.ikeyleap.ctrl.FilterListExample.MP3;
 import com.ikeyleap.ctrl.component.ext.RowHeaderTable;
 import com.ikeyleap.ctrl.component.util.DataBindingUtil;
 
+import ca.odell.glazedlists.BasicEventList;
+import ca.odell.glazedlists.EventList;
+import ca.odell.glazedlists.FilterList;
+import ca.odell.glazedlists.TextFilterator;
+import ca.odell.glazedlists.matchers.ThreadedMatcherEditor;
+import ca.odell.glazedlists.swing.TextComponentMatcherEditor;
 import jiconfont.icons.FontAwesome;
 import jiconfont.swing.IconFontSwing;
 
@@ -53,6 +60,9 @@ public class ShowTable extends JDialog {
 	
 	@SuppressWarnings("rawtypes")
 	private Class clazz;
+	private JTextField textField;
+	
+	private EventList eventList = new BasicEventList();
 
 	/**
 	 * @return the dataList
@@ -127,6 +137,7 @@ public class ShowTable extends JDialog {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				if (e.getClickCount() == 2) {// 点击几次，这里是双击事件
+					System.out.println(">>>>>>>>>>>>>" + jTableBeanProperty.getValue(table));
 					parent.setSelectedElement(jTableBeanProperty.getValue(table));
 					parent.getFormattedTextField().setValue(parent.getSelectedElement());
 					setVisible(false);
@@ -164,27 +175,39 @@ public class ShowTable extends JDialog {
 		cancelButton.setActionCommand("Cancel");
 		buttonPane.add(cancelButton);
 
-		JToolBar toolBar = new JToolBar();
-		toolBar.setFloatable(false);
-		getContentPane().add(toolBar, BorderLayout.NORTH);
-
-		JButton btnFilterButton = new JButton("");
-		btnFilterButton.setBackground(UIManager.getColor("Button.background"));
-		btnFilterButton.setToolTipText("过滤");
-		btnFilterButton.setIcon(IconFontSwing.buildIcon(FontAwesome.FILTER, 16, new Color(0, 128, 0)));
-		btnFilterButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				refreshTable();
-			}
-		});
-		toolBar.add(btnFilterButton);
-
 		try {
 			jTableBinding = SwingBindings.createJTableBinding(UpdateStrategy.READ, dataList, table);
+			
+			JPanel filterPanel = new JPanel();
+			FlowLayout flowLayout = (FlowLayout) filterPanel.getLayout();
+			flowLayout.setAlignment(FlowLayout.LEFT);
+			getContentPane().add(filterPanel, BorderLayout.NORTH);
+			
+			JLabel searchIconLabel = new JLabel(IconFontSwing.buildIcon(FontAwesome.SEARCH, 12, new Color(0, 128, 0)));
+			filterPanel.add(searchIconLabel);
+			
+			textField = new JTextField();
+			filterPanel.add(textField);
+			textField.setColumns(25);
+			
+			TextFilterator filterator = new TextFilterator() {
+	            public void getFilterStrings(List baseList, Object element) {
+	                MP3 mp3 = (MP3) element;
+	                baseList.add(mp3.getAlbum());
+	                baseList.add(mp3.getArtist());
+	                baseList.add(mp3.getSong());
+	            }
+	        };
+	        TextComponentMatcherEditor matcherEditor = new TextComponentMatcherEditor(textField, filterator);
+	        FilterList filtered = new FilterList(eventList, new ThreadedMatcherEditor(matcherEditor));
+//			table.setModel(new DefaultEventTableModel(filtered, tf));
+			
 			DataBindingUtil.initDataBindings(clazz, jTableBinding);
 			jTableBinding.setEditable(false);
 			bindTable();
 			jTableBeanProperty = BeanProperty.create("selectedElement");
+
+	        System.out.println("" + (table.getModel()));
 		} catch (IntrospectionException e) {
 			e.printStackTrace();
 		}
@@ -196,10 +219,5 @@ public class ShowTable extends JDialog {
 		RowHeaderTable rowHeaderTable = new RowHeaderTable(table, 40);
 		rowHeaderTable.setBorder(new SoftBevelBorder(BevelBorder.LOWERED, null, null, null, null));
 		scrollPane.setRowHeaderView(rowHeaderTable);
-	}
-
-	private void refreshTable() {
-		jTableBinding.unbind();
-		bindTable();
 	}
 }

@@ -56,5 +56,11 @@
 			<artifactId>hutool-all</artifactId>
 			<version>4.1.15</version>
 		</dependency>
+		<!-- https://mvnrepository.com/artifact/com.glazedlists/glazedlists -->
+		<dependency>
+			<groupId>com.glazedlists</groupId>
+			<artifactId>glazedlists</artifactId>
+			<version>1.11.0</version>
+		</dependency>
 	</dependencies>
 </project>
