@@ -3,9 +3,7 @@ package com.ikeyleap.ctrl.test;
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
 import java.awt.FlowLayout;
-import java.util.LinkedHashMap;
 import java.util.List;
-import java.util.Map;
 import java.util.Random;
 
 import javax.swing.JFrame;
@@ -16,9 +14,7 @@ import javax.swing.JTextField;
 import javax.swing.text.JTextComponent;
 
 import com.google.common.collect.Lists;
-import com.google.common.collect.Maps;
 import com.ikeyleap.ctrl.component.model.ColModel;
-import com.ikeyleap.ctrl.component.table.KXListTable;
 
 import ca.odell.glazedlists.BasicEventList;
 import ca.odell.glazedlists.EventList;
@@ -29,10 +25,9 @@ import ca.odell.glazedlists.gui.TableFormat;
 import ca.odell.glazedlists.matchers.ThreadedMatcherEditor;
 import ca.odell.glazedlists.swing.EventTableModel;
 import ca.odell.glazedlists.swing.TextComponentMatcherEditor;
-import cn.hutool.core.util.ArrayUtil;
 import cn.hutool.core.util.ReflectUtil;
 
-@SuppressWarnings("serial")
+@SuppressWarnings({ "serial", "deprecation" })
 public class TestKXListTable extends JFrame {
 
 	public static class MP3 {
@@ -82,7 +77,9 @@ public class TestKXListTable extends JFrame {
 		return musicBuffer.toString();
 	}
 
+	@SuppressWarnings("unused")
 	private JPanel contentPane;
+	@SuppressWarnings("unused")
 	private JTextField filterField;
 
 	/**
@@ -111,6 +108,7 @@ public class TestKXListTable extends JFrame {
 		initialize();
 	}
 
+	@SuppressWarnings({ "unchecked", "rawtypes" })
 	private void initialize() {
 
 		// create an EventList of MP3s
@@ -179,7 +177,7 @@ public class TestKXListTable extends JFrame {
 				new ThreadedMatcherEditor(new TextComponentMatcherEditor(filterField, getTextFilterator())));
 	}
 	
-	@SuppressWarnings({ "unchecked", "rawtypes", "deprecation" })
+	@SuppressWarnings({ "unchecked", "rawtypes" })
 	public static JTable creatTable(TableFormat tf, EventList eventList, JTextComponent filterField) {
 		return new JTable(new EventTableModel(getFilterList(eventList, filterField), tf));
 	}
