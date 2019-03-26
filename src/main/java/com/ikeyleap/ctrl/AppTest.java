@@ -6,6 +6,7 @@ import java.awt.Dimension;
 import java.awt.EventQueue;
 import java.awt.FlowLayout;
 import java.awt.SystemColor;
+import java.util.Date;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -73,17 +74,17 @@ public class AppTest extends JFrame {
 		setContentPane(this.contentPane);
 
 		EventList dataList = new BasicEventList();
-		dataList.add(new Person("Konstantin Scheglov", "kosta@nospam.com", "1234567890", "", ""));
-		dataList.add(new Person("Alexander Mitin", "mitin@nospam.com", "", "0987654321", ""));
-		dataList.add(new Person("Alexander Lobas", "lobas@nospam.com", "", "", "111-222-333-00"));
-		dataList.add(new Person("Andey Sablin", "sablin@nospam.com", "098765", "", "aaa-vvv-ddd"));
-		dataList.add(new Person("Mike Taylor", "taylor@instantiations.com", "503-598-4900", "", ""));
-		dataList.add(new Person("Eric Clayberg", "clayberg@instantiations.com", "+1 (503) 598-4900", "", ""));
-		dataList.add(new Person("Dan Rubel", "dan@instantiations.com", "503-598-4900", "", ""));
-		dataList.add(new Person("AndeySablin", "sablin@nospam.com", "098765", "", "aaa-vvv-ddd"));
-		dataList.add(new Person("Mikaylor", "taylor@instantiations.com", "503-598-4900", "", ""));
-		dataList.add(new Person("Eriayberg", "clayberg@instantiations.com", "+1 (503) 598-4900", "", ""));
-		dataList.add(new Person("Danubel", "dan@instantiations.com", "503-598-4900", "", ""));
+		dataList.add(new Person(new Date().getTime() + "", "Konstantin Scheglov", "kosta@nospam.com", "1234567890", "", ""));
+		dataList.add(new Person(new Date().getTime() + "", "Alexander Mitin", "mitin@nospam.com", "", "0987654321", ""));
+		dataList.add(new Person(new Date().getTime() + "", "Alexander Lobas", "lobas@nospam.com", "", "", "111-222-333-00"));
+		dataList.add(new Person(new Date().getTime() + "", "Andey Sablin", "sablin@nospam.com", "098765", "", "aaa-vvv-ddd"));
+		dataList.add(new Person(new Date().getTime() + "", "Mike Taylor", "taylor@instantiations.com", "503-598-4900", "", ""));
+		dataList.add(new Person(new Date().getTime() + "", "Eric Clayberg", "clayberg@instantiations.com", "+1 (503) 598-4900", "", ""));
+		dataList.add(new Person(new Date().getTime() + "", "Dan Rubel", "dan@instantiations.com", "503-598-4900", "", ""));
+		dataList.add(new Person(new Date().getTime() + "", "AndeySablin", "sablin@nospam.com", "098765", "", "aaa-vvv-ddd"));
+		dataList.add(new Person(new Date().getTime() + "", "Mikaylor", "taylor@instantiations.com", "503-598-4900", "", ""));
+		dataList.add(new Person(new Date().getTime() + "", "Eriayberg", "clayberg@instantiations.com", "+1 (503) 598-4900", "", ""));
+		dataList.add(new Person(new Date().getTime() + "", "Danubel", "dan@instantiations.com", "503-598-4900", "", ""));
 		this.contentPane.setLayout(new BorderLayout(0, 0));
 
 		this.panel = new JPanel();

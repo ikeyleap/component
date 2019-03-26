@@ -93,8 +93,9 @@ public class Person extends BaseModel{
 		this.mobilePhone2 = mobilePhone2;
 	}
 
-	public Person(String name, String email, String phone, String mobilePhone1, String mobilePhone2) {
+	public Person(String number, String name, String email, String phone, String mobilePhone1, String mobilePhone2) {
 		super();
+		setNumber(number);
 		this.name = name;
 		this.email = email;
 		this.phone = phone;

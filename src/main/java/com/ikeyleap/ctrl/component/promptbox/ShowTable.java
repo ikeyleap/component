@@ -125,7 +125,7 @@ public class ShowTable extends JDialog {
 
 		table = //new JTable();
 		TestKXListTable.creatTable(TestKXListTable.getTableFormat(tableList), dataList, textField);
-		this.table.addMouseListener(new MouseAdapter() {
+		table.addMouseListener(new MouseAdapter() {
 			@SuppressWarnings("rawtypes")
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -136,10 +136,8 @@ public class ShowTable extends JDialog {
 				}
 			}
 		});
+		
 		table.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
-//		table.setModel(new DefaultTableModel());
-
-//		TableFormat tf = TestKXListTable.getTableFormat(tableList);
 
 		scrollPane = new JScrollPane(table);
 		contentPanel.add(scrollPane);
@@ -150,7 +148,7 @@ public class ShowTable extends JDialog {
 		okButton.addActionListener(new ActionListener() {
 			@SuppressWarnings("rawtypes")
 			public void actionPerformed(ActionEvent e) {
-				if (table.getSelectedRow() > 0) {
+				if (table.getSelectedRowCount() > 0) {
 					parent.setSelectedElement(((DefaultEventTableModel)table.getModel()).getElementAt(table.getSelectedRow()));
 					parent.getFormattedTextField().setValue(parent.getSelectedElement());
 					setVisible(false);

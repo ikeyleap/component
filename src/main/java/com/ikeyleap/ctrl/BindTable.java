@@ -4,6 +4,7 @@ import java.awt.BorderLayout;
 import java.awt.EventQueue;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Date;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -59,17 +60,17 @@ public class BindTable extends JFrame {
 		this.contentPane.setLayout(new BorderLayout(0, 0));
 		setContentPane(this.contentPane);
 
-		model.addObject(new Person("Konstantin Scheglov", "kosta@nospam.com", "1234567890", "", ""));
-		model.addObject(new Person("Alexander Mitin", "mitin@nospam.com", "", "0987654321", ""));
-		model.addObject(new Person("Alexander Lobas", "lobas@nospam.com", "", "", "111-222-333-00"));
-		model.addObject(new Person("Andey Sablin", "sablin@nospam.com", "098765", "", "aaa-vvv-ddd"));
-		model.addObject(new Person("Mike Taylor", "taylor@instantiations.com", "503-598-4900", "", ""));
-		model.addObject(new Person("Eric Clayberg", "clayberg@instantiations.com", "+1 (503) 598-4900", "", ""));
-		model.addObject(new Person("Dan Rubel", "dan@instantiations.com", "503-598-4900", "", ""));
-		model.addObject(new Person("AndeySablin", "sablin@nospam.com", "098765", "", "aaa-vvv-ddd"));
-		model.addObject(new Person("Mikaylor", "taylor@instantiations.com", "503-598-4900", "", ""));
-		model.addObject(new Person("Eriayberg", "clayberg@instantiations.com", "+1 (503) 598-4900", "", ""));
-		model.addObject(new Person("Danubel", "dan@instantiations.com", "503-598-4900", "", ""));
+		model.addObject(new Person(new Date().getTime() + "", "Konstantin Scheglov", "kosta@nospam.com", "1234567890", "", ""));
+		model.addObject(new Person(new Date().getTime() + "", "Alexander Mitin", "mitin@nospam.com", "", "0987654321", ""));
+		model.addObject(new Person(new Date().getTime() + "", "Alexander Lobas", "lobas@nospam.com", "", "", "111-222-333-00"));
+		model.addObject(new Person(new Date().getTime() + "", "Andey Sablin", "sablin@nospam.com", "098765", "", "aaa-vvv-ddd"));
+		model.addObject(new Person(new Date().getTime() + "", "Mike Taylor", "taylor@instantiations.com", "503-598-4900", "", ""));
+		model.addObject(new Person(new Date().getTime() + "", "Eric Clayberg", "clayberg@instantiations.com", "+1 (503) 598-4900", "", ""));
+		model.addObject(new Person(new Date().getTime() + "", "Dan Rubel", "dan@instantiations.com", "503-598-4900", "", ""));
+		model.addObject(new Person(new Date().getTime() + "", "AndeySablin", "sablin@nospam.com", "098765", "", "aaa-vvv-ddd"));
+		model.addObject(new Person(new Date().getTime() + "", "Mikaylor", "taylor@instantiations.com", "503-598-4900", "", ""));
+		model.addObject(new Person(new Date().getTime() + "", "Eriayberg", "clayberg@instantiations.com", "+1 (503) 598-4900", "", ""));
+		model.addObject(new Person(new Date().getTime() + "", "Danubel", "dan@instantiations.com", "503-598-4900", "", ""));
 
 		this.scrollPane = new JScrollPane();
 
@@ -82,7 +83,7 @@ public class BindTable extends JFrame {
 		this.btnAddButton = new JButton("Add");
 		this.btnAddButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				table.addRow(new Person("11111111111111111", "kosta@nospam.com", "1234567890", "", ""));
+				table.addRow(new Person(new Date().getTime() + "", "11111111111111111", "kosta@nospam.com", "1234567890", "", ""));
 			}
 		});
 		this.toolBar.add(this.btnAddButton);
