@@ -27,9 +27,9 @@ import org.jdesktop.beansbinding.BeanProperty;
 import org.jdesktop.swingbinding.JTableBinding;
 import org.jdesktop.swingbinding.SwingBindings;
 
-import com.ikeyleap.ctrl.FilterListExample.MP3;
 import com.ikeyleap.ctrl.component.ext.RowHeaderTable;
 import com.ikeyleap.ctrl.component.util.DataBindingUtil;
+import com.ikeyleap.ctrl.test.FilterListExample.MP3;
 
 import ca.odell.glazedlists.BasicEventList;
 import ca.odell.glazedlists.EventList;
