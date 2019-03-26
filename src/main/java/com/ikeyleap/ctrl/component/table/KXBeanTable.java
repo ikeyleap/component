@@ -1,6 +1,7 @@
 package com.ikeyleap.ctrl.component.table;
 
 import java.awt.BorderLayout;
+import java.util.List;
 
 import javax.swing.JComponent;
 import javax.swing.JScrollPane;
@@ -26,14 +27,16 @@ public class KXBeanTable extends JComponent {
 	private RowHeaderTable rowLines;
 
 	@SuppressWarnings("rawtypes")
-	private KXTableModel model;
+	private KXTableModel model = new KXTableModel();
 	
 	public KXBeanTable() {
-		this(new JTable());
+		this(new JTable(), null);
 	}
 	
-	public KXBeanTable(JTable table) {
+	@SuppressWarnings({ "unchecked", "rawtypes" })
+	public KXBeanTable(JTable table, List dataList) {
 		this.table = table;
+		model.setDataList(dataList);
 		init();
 	}
 
@@ -102,6 +105,12 @@ public class KXBeanTable extends JComponent {
 		model.addObject(o);
 		refresh();
 	}
+	
+	@SuppressWarnings({ "unchecked", "rawtypes" })
+	public void addAll(List dataList) {
+		model.setDataList(dataList);
+		refresh();
+	}
 
 	@SuppressWarnings("unchecked")
 	public void delRow() {
@@ -112,7 +121,7 @@ public class KXBeanTable extends JComponent {
 		}
 	}
 
-	private void refresh() {
+	public void refresh() {
 		rowLines = new RowHeaderTable(table);
 		rowLines.setShowGrid(isShowGrid);
 		rowLines.setBorder(rowLinesBorder);

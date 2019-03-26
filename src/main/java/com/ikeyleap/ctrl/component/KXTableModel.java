@@ -3,12 +3,14 @@ package com.ikeyleap.ctrl.component;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.google.common.collect.Lists;
+
 /**
  * @author lipeng
  * 
  */
 public class KXTableModel<T> extends AbstractModelObject {
-	private List<T> dataList = new ArrayList<T>();
+	private List<T> dataList = Lists.newArrayList();
 
 	@SuppressWarnings({ "rawtypes", "unchecked" })
 	public void addObject(T o) {
@@ -43,7 +45,10 @@ public class KXTableModel<T> extends AbstractModelObject {
 	 * @param dataList
 	 *            the dataList to set
 	 */
-	public void setDataList(List<T> dataList) {
+	public void setDataList(List<T> dataList) {		
+		List<T> oldValue = this.dataList;
 		this.dataList = dataList;
+		firePropertyChange("dataList", oldValue, dataList);
+		firePropertyChange("dataListCount", oldValue.size(), dataList.size());
 	}
 }
