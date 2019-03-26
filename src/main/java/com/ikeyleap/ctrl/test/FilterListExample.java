@@ -7,9 +7,14 @@ import ca.odell.glazedlists.swing.EventTableModel;
 import ca.odell.glazedlists.swing.TextComponentMatcherEditor;
 
 import javax.swing.*;
+
+import org.jdesktop.beansbinding.BeanProperty;
+
 import java.awt.*;
 import java.util.*;
 import java.util.List;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 public class FilterListExample {
 
@@ -96,12 +101,23 @@ public class FilterListExample {
         String[] columnLabels = new String[] {"Track", "Artist", "Album", "Song"};
         TableFormat tf = GlazedLists.tableFormat(MP3.class, propertyNames, columnLabels);
         JTable t = new JTable(new EventTableModel(filteredMP3s, tf));
+        t.addMouseListener(new MouseAdapter() {
+        	@Override
+        	public void mouseClicked(MouseEvent e) {
+        		if (e.getClickCount() == 2) {
+        			BeanProperty<JTable, Object> jTableBeanProperty = BeanProperty.create("selectedElement");
+        			Object o = jTableBeanProperty.getValue(t);
+        			System.out.println(">>>>>>>>>>>>>>>>>" + o);
+        			BeanProperty.create("selectedElement");
+        		}
+        	}
+        });
 
         // place the table in a JFrame
         JFrame f = new JFrame();
-        f.setLayout(new BorderLayout());
-        f.add(filterPanel, BorderLayout.NORTH);
-        f.add(new JScrollPane(t), BorderLayout.CENTER);
+        f.getContentPane().setLayout(new BorderLayout());
+        f.getContentPane().add(filterPanel, BorderLayout.NORTH);
+        f.getContentPane().add(new JScrollPane(t), BorderLayout.CENTER);
 
         // show the frame
         f.pack();
