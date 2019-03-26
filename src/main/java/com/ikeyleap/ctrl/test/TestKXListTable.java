@@ -147,7 +147,7 @@ public class TestKXListTable extends JFrame {
 	}
 	
 	@SuppressWarnings("rawtypes")
-	private static TableFormat getTableFormat(List<ColModel> tableList){
+	public static TableFormat getTableFormat(List<ColModel> tableList){
 		String[] propertyNames = new String[tableList.size()];
 		String[] columnLabels = new String[tableList.size()];
 		boolean[] editables = new boolean[tableList.size()];

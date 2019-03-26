@@ -6,8 +6,6 @@ import java.awt.Dimension;
 import java.awt.EventQueue;
 import java.awt.FlowLayout;
 import java.awt.SystemColor;
-import java.util.ArrayList;
-import java.util.List;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -21,6 +19,9 @@ import javax.swing.border.MatteBorder;
 
 import com.ikeyleap.ctrl.component.promptbox.JPromptbox;
 import com.ikeyleap.ctrl.component.table.KXTable;
+
+import ca.odell.glazedlists.BasicEventList;
+import ca.odell.glazedlists.EventList;
 
 @SuppressWarnings("serial")
 public class AppTest extends JFrame {
@@ -71,7 +72,7 @@ public class AppTest extends JFrame {
 		this.contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(this.contentPane);
 
-		List dataList = new ArrayList();
+		EventList dataList = new BasicEventList();
 		dataList.add(new Person("Konstantin Scheglov", "kosta@nospam.com", "1234567890", "", ""));
 		dataList.add(new Person("Alexander Mitin", "mitin@nospam.com", "", "0987654321", ""));
 		dataList.add(new Person("Alexander Lobas", "lobas@nospam.com", "", "", "111-222-333-00"));

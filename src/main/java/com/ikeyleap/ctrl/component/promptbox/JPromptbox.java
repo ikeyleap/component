@@ -8,7 +8,6 @@ import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
 import java.text.MessageFormat;
 import java.text.ParseException;
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.swing.JButton;
@@ -24,6 +23,8 @@ import org.jdesktop.beansbinding.BeanProperty;
 import org.jdesktop.beansbinding.Bindings;
 import org.jdesktop.beansbinding.ELProperty;
 
+import ca.odell.glazedlists.BasicEventList;
+import ca.odell.glazedlists.EventList;
 import cn.hutool.core.bean.BeanUtil;
 import jiconfont.icons.FontAwesome;
 import jiconfont.swing.IconFontSwing;
@@ -52,7 +53,7 @@ public class JPromptbox extends JComponent implements Promptbox {
 	private Class clazz;
 
 	@SuppressWarnings("rawtypes")
-	public List dataList = new ArrayList();
+	public EventList dataList = new BasicEventList();
 
 	/**
 	 * @return the dataList
@@ -66,7 +67,7 @@ public class JPromptbox extends JComponent implements Promptbox {
 	 * @param dataList the dataList to set
 	 */
 	@SuppressWarnings("rawtypes")
-	public void setDataList(List dataList) {
+	public void setDataList(EventList dataList) {
 		this.dataList = dataList;
 	}
 
@@ -77,13 +78,13 @@ public class JPromptbox extends JComponent implements Promptbox {
 	}
 
 	@SuppressWarnings("rawtypes")
-	public JPromptbox(List dataList) {
+	public JPromptbox(EventList dataList) {
 		this.dataList = dataList;
 		initialize();
 	}
 
 	@SuppressWarnings("rawtypes")
-	public JPromptbox(List dataList, Class clazz) {
+	public JPromptbox(EventList dataList, Class clazz) {
 		this.clazz = clazz;
 		this.dataList = dataList;
 		initialize();

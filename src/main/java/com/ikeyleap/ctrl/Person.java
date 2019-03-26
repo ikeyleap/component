@@ -1,10 +1,12 @@
 package com.ikeyleap.ctrl;
 
+import com.ikeyleap.ctrl.component.model.BaseModel;
+
 /**
  * @author lobas_av
  * 
  */
-public class Person {
+public class Person extends BaseModel{
 	private String name;
 	private String email;
 	private String phone;
