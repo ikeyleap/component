@@ -9,6 +9,7 @@ import javax.swing.ListSelectionModel;
 import javax.swing.border.Border;
 import javax.swing.border.EtchedBorder;
 
+import com.ikeyleap.ctrl.component.KXTableModel;
 import com.ikeyleap.ctrl.component.ext.RowHeaderTable;
 
 @SuppressWarnings("serial")
@@ -22,9 +23,16 @@ public class KXListTable extends JComponent {
 	private JScrollPane scrollPane;
 	private JTable table;
 	private RowHeaderTable rowLines;
+	
+	private KXTableModel model = new KXTableModel();
 
 	public KXListTable() {
-		this(new JTable());
+		table = new JTable();
+	}
+
+	public KXListTable(KXTableModel model) {
+		this.table = new JTable();
+		this.model = model;
 	}
 
 	public KXListTable(JTable table) {
@@ -81,6 +89,21 @@ public class KXListTable extends JComponent {
 	 */
 	public void setRowLines(RowHeaderTable rowLines) {
 		this.rowLines = rowLines;
+	}
+	
+	public void refresh() {
+		rowLines = new RowHeaderTable(table);
+		rowLines.setShowGrid(isShowGrid);
+		rowLines.setBorder(rowLinesBorder);
+		scrollPane.setRowHeaderView(rowLines);
+	}
+
+	public KXTableModel getModel() {
+		return model;
+	}
+
+	public void setModel(KXTableModel model) {
+		this.model = model;
 	}
 
 }
