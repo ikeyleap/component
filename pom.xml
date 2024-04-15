@@ -37,7 +37,7 @@
 		<dependency>
 			<groupId>com.github.jiconfont</groupId>
 			<artifactId>jiconfont-bundle</artifactId>
-			<version>1.2.1</version>
+			<version>1.4.0</version>
 		</dependency>
 		<dependency>
 			<groupId>cn.hutool</groupId>
@@ -49,6 +49,12 @@
 			<groupId>com.glazedlists</groupId>
 			<artifactId>glazedlists</artifactId>
 			<version>1.11.0</version>
+		</dependency>
+		<dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+			<version>1.18.20</version>
+			<scope>provided</scope>
 		</dependency>
 	</dependencies>
 </project>

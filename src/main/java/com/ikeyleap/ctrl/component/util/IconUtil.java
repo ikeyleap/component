@@ -7,7 +7,7 @@ import javax.swing.Icon;
 import javax.swing.ImageIcon;
 
 import jiconfont.IconCode;
-import jiconfont.icons.FontAwesome;
+import jiconfont.icons.font_awesome.FontAwesome;
 import jiconfont.swing.IconFontSwing;
 
 /**

@@ -11,8 +11,15 @@ import javax.swing.border.EtchedBorder;
 
 import com.ikeyleap.ctrl.component.model.KXTableModel;
 import com.ikeyleap.ctrl.component.ext.RowHeaderTable;
+import lombok.Getter;
+import lombok.Setter;
 
-@SuppressWarnings("serial")
+/**
+ * KxListTable is a JComponent that contains a JTable and a JScrollPane. It is used to display a list of data in a table format.
+ * @author ikeyleap
+ */
+@Setter
+@Getter
 public class KXListTable extends JComponent {
 	private final BorderLayout layout = new BorderLayout();
 	private final int autoResizeMode = JTable.AUTO_RESIZE_OFF;
@@ -60,50 +67,12 @@ public class KXListTable extends JComponent {
 		initTable();
 		initRowLines();
 	}
-
-	/**
-	 * @return the table
-	 */
-	public JTable getTable() {
-		return table;
-	}
-
-	/**
-	 * @param table
-	 *            the table to set
-	 */
-	public void setTable(JTable table) {
-		this.table = table;
-	}
-
-	/**
-	 * @return the rowLines
-	 */
-	public RowHeaderTable getRowLines() {
-		return rowLines;
-	}
-
-	/**
-	 * @param rowLines
-	 *            the rowLines to set
-	 */
-	public void setRowLines(RowHeaderTable rowLines) {
-		this.rowLines = rowLines;
-	}
 	
 	public void refresh() {
 		rowLines = new RowHeaderTable(table);
 		rowLines.setShowGrid(isShowGrid);
 		rowLines.setBorder(rowLinesBorder);
 		scrollPane.setRowHeaderView(rowLines);
-	}
-
-	public KXTableModel getModel() {
-		return model;
-	}
-
-	public void setModel(KXTableModel model) {
-		this.model = model;
 	}
 
 }

@@ -10,8 +10,23 @@ import javax.swing.border.Border;
 import javax.swing.border.EtchedBorder;
 
 import com.ikeyleap.ctrl.component.ext.RowHeaderTable;
+import lombok.Getter;
+import lombok.Setter;
 
-@SuppressWarnings("serial")
+
+/**
+ * 扩展了一个Table，增加了行号、行头和自动调整列宽的功能
+ * 直接包裹一个JTable即可使用，如：
+ * KXTable table = new KXTable(new JTable(dataModel));
+ * add(table, BorderLayout.CENTER);
+ *
+ * @author ikeyleap
+ * @version 1.0
+ * @date 2021/11/15 14:34
+ * @description KXTable is a customized JTable with row header and auto-resize feature.
+ */
+@Setter
+@Getter
 public class KXTable extends JComponent {
 	private final BorderLayout layout = new BorderLayout();
 	private final int autoResizeMode = JTable.AUTO_RESIZE_OFF;
@@ -53,34 +68,5 @@ public class KXTable extends JComponent {
 		initRowLines();
 	}
 
-	/**
-	 * @return the table
-	 */
-	public JTable getTable() {
-		return table;
-	}
-
-	/**
-	 * @param table
-	 *            the table to set
-	 */
-	public void setTable(JTable table) {
-		this.table = table;
-	}
-
-	/**
-	 * @return the rowLines
-	 */
-	public RowHeaderTable getRowLines() {
-		return rowLines;
-	}
-
-	/**
-	 * @param rowLines
-	 *            the rowLines to set
-	 */
-	public void setRowLines(RowHeaderTable rowLines) {
-		this.rowLines = rowLines;
-	}
 
 }

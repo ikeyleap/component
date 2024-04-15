@@ -4,13 +4,20 @@ import java.util.ArrayList;
 import java.util.List;
 
 import cn.hutool.core.collection.CollUtil;
+import lombok.Getter;
 
 /**
  * @author lipeng
  * 
  */
+@Getter
 public class KXTableModel<T> extends AbstractModelObject {
-	private List<T> dataList = CollUtil.newArrayList();
+    /**
+     * -- GETTER --
+     *
+     * @return the dataList
+     */
+    private List<T> dataList = CollUtil.newArrayList();
 
 	@SuppressWarnings({ "rawtypes", "unchecked" })
 	public void addObject(T o) {
@@ -34,14 +41,7 @@ public class KXTableModel<T> extends AbstractModelObject {
 		return dataList.size();
 	}
 
-	/**
-	 * @return the dataList
-	 */
-	public List<T> getDataList() {
-		return dataList;
-	}
-
-	/**
+    /**
 	 * @param dataList
 	 *            the dataList to set
 	 */

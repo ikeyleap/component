@@ -5,7 +5,7 @@ import ca.odell.glazedlists.EventList;
 import ca.odell.glazedlists.swing.DefaultEventTableModel;
 import cn.hutool.core.collection.CollUtil;
 import com.ikeyleap.ctrl.component.model.ColModel;
-import jiconfont.icons.FontAwesome;
+import jiconfont.icons.font_awesome.FontAwesome;
 import jiconfont.swing.IconFontSwing;
 
 import javax.swing.*;

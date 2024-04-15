@@ -1,7 +1,19 @@
 package com.ikeyleap.ctrl.component.promptbox;
 
-import java.awt.Color;
-import java.awt.Dimension;
+import ca.odell.glazedlists.BasicEventList;
+import ca.odell.glazedlists.EventList;
+import cn.hutool.core.bean.BeanUtil;
+import jiconfont.icons.font_awesome.FontAwesome;
+import jiconfont.swing.IconFontSwing;
+import org.jdesktop.beansbinding.AutoBinding;
+import org.jdesktop.beansbinding.AutoBinding.UpdateStrategy;
+import org.jdesktop.beansbinding.BeanProperty;
+import org.jdesktop.beansbinding.Bindings;
+import org.jdesktop.beansbinding.ELProperty;
+
+import javax.swing.*;
+import javax.swing.text.DefaultFormatter;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.beans.PropertyChangeListener;
@@ -9,25 +21,6 @@ import java.beans.PropertyChangeSupport;
 import java.text.MessageFormat;
 import java.text.ParseException;
 import java.util.List;
-
-import javax.swing.JButton;
-import javax.swing.JComponent;
-import javax.swing.JDialog;
-import javax.swing.JFormattedTextField;
-import javax.swing.SpringLayout;
-import javax.swing.text.DefaultFormatter;
-
-import org.jdesktop.beansbinding.AutoBinding;
-import org.jdesktop.beansbinding.AutoBinding.UpdateStrategy;
-import org.jdesktop.beansbinding.BeanProperty;
-import org.jdesktop.beansbinding.Bindings;
-import org.jdesktop.beansbinding.ELProperty;
-
-import ca.odell.glazedlists.BasicEventList;
-import ca.odell.glazedlists.EventList;
-import cn.hutool.core.bean.BeanUtil;
-import jiconfont.icons.FontAwesome;
-import jiconfont.swing.IconFontSwing;
 
 @SuppressWarnings("serial")
 public class JPromptbox extends JComponent implements Promptbox {

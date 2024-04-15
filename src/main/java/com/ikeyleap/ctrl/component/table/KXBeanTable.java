@@ -13,8 +13,22 @@ import javax.swing.border.EtchedBorder;
 import com.ikeyleap.ctrl.component.model.KXTableModel;
 import com.ikeyleap.ctrl.component.ext.RowHeaderTable;
 import com.ikeyleap.ctrl.component.util.DataBindingUtil;
+import lombok.Getter;
+import lombok.Setter;
 
-@SuppressWarnings("serial")
+/**
+ * 扩展JTable，增加行号显示，增加行删除功能，绑定bean数据，支持自动刷新，主要用于查找带回空间
+ *
+ * @author ikey
+ * @version 1.0
+ * @date 2019-01-10
+ *
+ * @description KXBeanTable is a JComponent that displays a JTable with a
+ *              RowHeaderTable to display row numbers. It also provides methods
+ *              to add and delete rows from the table.
+ */
+@Setter
+@Getter
 public class KXBeanTable extends JComponent {
 	private final BorderLayout layout = new BorderLayout();
 	private final int autoResizeMode = JTable.AUTO_RESIZE_OFF;
@@ -26,7 +40,7 @@ public class KXBeanTable extends JComponent {
 	private JTable table;
 	private RowHeaderTable rowLines;
 
-	@SuppressWarnings("rawtypes")
+
 	private KXTableModel model = new KXTableModel();
 	
 	public KXBeanTable() {
@@ -70,36 +84,6 @@ public class KXBeanTable extends JComponent {
 	}
 
 
-	/**
-	 * @return the table
-	 */
-	public JTable getTable() {
-		return table;
-	}
-
-	/**
-	 * @param table
-	 *            the table to set
-	 */
-	public void setTable(JTable table) {
-		this.table = table;
-	}
-
-	/**
-	 * @return the rowLines
-	 */
-	public RowHeaderTable getRowLines() {
-		return rowLines;
-	}
-
-	/**
-	 * @param rowLines
-	 *            the rowLines to set
-	 */
-	public void setRowLines(RowHeaderTable rowLines) {
-		this.rowLines = rowLines;
-	}
-
 	@SuppressWarnings("unchecked")
 	public void addRow(Object o) {
 		model.addObject(o);
@@ -128,19 +112,4 @@ public class KXBeanTable extends JComponent {
 		scrollPane.setRowHeaderView(rowLines);
 	}
 
-	/**
-	 * @return the model
-	 */
-	@SuppressWarnings("rawtypes")
-	public KXTableModel getModel() {
-		return model;
-	}
-
-	/**
-	 * @param model the model to set
-	 */
-	@SuppressWarnings("rawtypes")
-	public void setModel(KXTableModel model) {
-		this.model = model;
-	}
 }
