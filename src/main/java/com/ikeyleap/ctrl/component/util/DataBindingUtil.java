@@ -11,7 +11,7 @@ import org.jdesktop.beansbinding.BeanProperty;
 import org.jdesktop.swingbinding.JTableBinding;
 import org.jdesktop.swingbinding.SwingBindings;
 
-import com.ikeyleap.ctrl.component.KXTableModel;
+import com.ikeyleap.ctrl.component.model.KXTableModel;
 
 import cn.hutool.core.bean.BeanUtil;
 

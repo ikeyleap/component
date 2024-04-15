@@ -1,34 +1,22 @@
-package com.ikeyleap.ctrl.test;
+package com.ikeyleap.ctrl.component.promptbox;
 
-import java.awt.BorderLayout;
-import java.awt.EventQueue;
-import java.awt.FlowLayout;
-import java.util.List;
-import java.util.Random;
-
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.JTable;
-import javax.swing.JTextField;
-import javax.swing.text.JTextComponent;
-
-import com.google.common.collect.Lists;
-import com.ikeyleap.ctrl.component.model.ColModel;
-
-import ca.odell.glazedlists.BasicEventList;
-import ca.odell.glazedlists.EventList;
-import ca.odell.glazedlists.FilterList;
-import ca.odell.glazedlists.GlazedLists;
-import ca.odell.glazedlists.TextFilterator;
+import ca.odell.glazedlists.*;
 import ca.odell.glazedlists.gui.TableFormat;
 import ca.odell.glazedlists.matchers.ThreadedMatcherEditor;
 import ca.odell.glazedlists.swing.EventTableModel;
 import ca.odell.glazedlists.swing.TextComponentMatcherEditor;
+import cn.hutool.core.collection.CollUtil;
 import cn.hutool.core.util.ReflectUtil;
+import com.ikeyleap.ctrl.component.model.ColModel;
+
+import javax.swing.*;
+import javax.swing.text.JTextComponent;
+import java.awt.*;
+import java.util.List;
+import java.util.Random;
 
 @SuppressWarnings({ "serial", "deprecation" })
-public class TestKXListTable extends JFrame {
+public class KXListTable extends JFrame {
 
 	public static class MP3 {
 		private int track;
@@ -89,7 +77,7 @@ public class TestKXListTable extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					TestKXListTable frame = new TestKXListTable();
+					KXListTable frame = new KXListTable();
 					frame.pack();
 					frame.setLocationRelativeTo(null);
 					frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -104,7 +92,7 @@ public class TestKXListTable extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public TestKXListTable() {
+	public KXListTable() {
 		initialize();
 	}
 
@@ -130,7 +118,7 @@ public class TestKXListTable extends JFrame {
 		filterPanel.add(filterField);
 
 		// build a JTable		
-		List<ColModel> tableList = Lists.newArrayList();
+		List<ColModel> tableList = CollUtil.newArrayList();
 
 		tableList.add(new ColModel("track","Track"));
 		tableList.add(new ColModel("artist", "Artist"));
@@ -164,7 +152,7 @@ public class TestKXListTable extends JFrame {
 			@SuppressWarnings({ "rawtypes", "unchecked" })
 			@Override
 			public void getFilterStrings(List baseList, Object element) {
-				baseList.addAll(Lists.newArrayList(ReflectUtil.getFieldsValue(element)));
+				baseList.addAll(CollUtil.newArrayList(ReflectUtil.getFieldsValue(element)));
 			}
 
 		};

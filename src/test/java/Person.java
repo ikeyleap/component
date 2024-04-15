@@ -1,5 +1,3 @@
-package com.ikeyleap.ctrl;
-
 import com.ikeyleap.ctrl.component.model.BaseModel;
 
 /**

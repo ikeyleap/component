@@ -1,31 +1,20 @@
 package com.ikeyleap.ctrl.component.promptbox;
 
-import java.awt.BorderLayout;
-import java.awt.Color;
-import java.awt.FlowLayout;
+import ca.odell.glazedlists.BasicEventList;
+import ca.odell.glazedlists.EventList;
+import ca.odell.glazedlists.swing.DefaultEventTableModel;
+import cn.hutool.core.collection.CollUtil;
+import com.ikeyleap.ctrl.component.model.ColModel;
+import jiconfont.icons.FontAwesome;
+import jiconfont.swing.IconFontSwing;
+
+import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.List;
-
-import javax.swing.JButton;
-import javax.swing.JDialog;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.JScrollPane;
-import javax.swing.JTable;
-import javax.swing.JTextField;
-
-import com.google.common.collect.Lists;
-import com.ikeyleap.ctrl.component.model.ColModel;
-import com.ikeyleap.ctrl.test.TestKXListTable;
-
-import ca.odell.glazedlists.BasicEventList;
-import ca.odell.glazedlists.EventList;
-import ca.odell.glazedlists.swing.DefaultEventTableModel;
-import jiconfont.icons.FontAwesome;
-import jiconfont.swing.IconFontSwing;
 
 public class ShowTable extends JDialog {
 
@@ -107,7 +96,7 @@ public class ShowTable extends JDialog {
 
 	private void initialize() {
 		// build a JTable
-		List<ColModel> tableList = Lists.newArrayList();
+		List<ColModel> tableList = CollUtil.newArrayList();
 
 		tableList.add(new ColModel("number", "编码"));
 		tableList.add(new ColModel("name", "名称"));
@@ -124,7 +113,7 @@ public class ShowTable extends JDialog {
 
 
 		table = //new JTable();
-		TestKXListTable.creatTable(TestKXListTable.getTableFormat(tableList), dataList, textField);
+		KXListTable.creatTable(KXListTable.getTableFormat(tableList), dataList, textField);
 		table.addMouseListener(new MouseAdapter() {
 			@SuppressWarnings("rawtypes")
 			@Override

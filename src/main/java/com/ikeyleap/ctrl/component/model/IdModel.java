@@ -8,8 +8,6 @@
  ********************************************************************/
 package com.ikeyleap.ctrl.component.model;
 
-import com.ikeyleap.ctrl.component.AbstractModelObject;
-
 /**
  * 所有entity类的超类. 
  * 

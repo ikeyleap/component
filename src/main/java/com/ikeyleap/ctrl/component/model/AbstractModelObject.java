@@ -1,4 +1,4 @@
-package com.ikeyleap.ctrl.component;
+package com.ikeyleap.ctrl.component.model;
 
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;

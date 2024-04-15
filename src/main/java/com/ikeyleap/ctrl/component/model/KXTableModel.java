@@ -1,16 +1,16 @@
-package com.ikeyleap.ctrl.component;
+package com.ikeyleap.ctrl.component.model;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import com.google.common.collect.Lists;
+import cn.hutool.core.collection.CollUtil;
 
 /**
  * @author lipeng
  * 
  */
 public class KXTableModel<T> extends AbstractModelObject {
-	private List<T> dataList = Lists.newArrayList();
+	private List<T> dataList = CollUtil.newArrayList();
 
 	@SuppressWarnings({ "rawtypes", "unchecked" })
 	public void addObject(T o) {

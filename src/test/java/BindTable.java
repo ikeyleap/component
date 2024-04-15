@@ -1,5 +1,3 @@
-package com.ikeyleap.ctrl;
-
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
 import java.awt.event.ActionEvent;
@@ -13,7 +11,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JToolBar;
 import javax.swing.border.EmptyBorder;
 
-import com.ikeyleap.ctrl.component.KXTableModel;
+import com.ikeyleap.ctrl.component.model.KXTableModel;
 import com.ikeyleap.ctrl.component.table.KXBeanTable;
 
 @SuppressWarnings("serial")

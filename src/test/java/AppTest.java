@@ -1,5 +1,3 @@
-package com.ikeyleap.ctrl;
-
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
