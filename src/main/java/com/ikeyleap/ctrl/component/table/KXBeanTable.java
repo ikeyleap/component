@@ -12,7 +12,7 @@ import javax.swing.border.EtchedBorder;
 
 import com.ikeyleap.ctrl.component.model.KXTableModel;
 import com.ikeyleap.ctrl.component.ext.RowHeaderTable;
-import com.ikeyleap.ctrl.component.util.DataBindingUtil;
+//import com.ikeyleap.ctrl.component.util.DataBindingUtil;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -58,7 +58,7 @@ public class KXBeanTable extends JComponent {
 	public KXBeanTable(KXTableModel model, Class clazz) {
 		table = new JTable();
 		this.model = model;
-		DataBindingUtil.initDataBindings(model, clazz, table);
+//		DataBindingUtil.initDataBindings(model, clazz, table);
 		init();
 	}
 	
