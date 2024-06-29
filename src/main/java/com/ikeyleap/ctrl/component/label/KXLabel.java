@@ -16,8 +16,9 @@ import javax.swing.JLabel;
 /**
  * 创建带下划线的自定义标签组件
  * 示例代码：KXLabel label1 = new KXLabel("Label下划线");
- *
- * @date 2018-05-18
+ * label1.setUnderLineColor(Color.BLUE);
+ * label1.setPreferredSize(new Dimension(200, 16));
+ * label1.setBorder(BorderFactory.createMatteBorder(0, 0, 1, 0, Color.BLACK));
  * @author ikeyleap
  */
 @Getter

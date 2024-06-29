@@ -59,7 +59,7 @@ public abstract class BaseModel extends IdModel {
 	}
 
 	/**
-	 * @param creater
+	 * @param creator
 	 *            要设置的 creater
 	 */
 	public void setCreator(String creator) {

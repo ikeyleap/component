@@ -21,7 +21,7 @@ public class RowHeaderTable extends JTable {
 	 * 
 	 * @param refTable
 	 *            需要添加rowHeader的JTable
-	 * @param columnWideth
+	 * @param columnWidth
 	 *            rowHeader的宽度
 	 */
 	public RowHeaderTable(JTable refTable, int columnWidth) {

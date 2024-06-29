@@ -51,18 +51,19 @@ public class ShowTable extends JDialog {
 		this.dataList = dataList;
 	}
 
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		try {
-			ShowTable dialog = new ShowTable();
-			dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
-			dialog.setVisible(true);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-	}
+//	/**
+//	 * Launch the application.
+//	 * @param args
+//	 */
+//	public static void main(String[] args) {
+//		try {
+//			ShowTable dialog = new ShowTable();
+//			dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
+//			dialog.setVisible(true);
+//		} catch (Exception e) {
+//			e.printStackTrace();
+//		}
+//	}
 
 	/**
 	 * Create the dialog.
@@ -73,6 +74,7 @@ public class ShowTable extends JDialog {
 
 	/**
 	 * Create the dialog.
+	 * @param _parent .
 	 */
 	public ShowTable(JPromptbox _parent) {
 		parent = _parent;

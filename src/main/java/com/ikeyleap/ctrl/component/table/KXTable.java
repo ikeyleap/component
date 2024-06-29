@@ -24,8 +24,6 @@ import lombok.Setter;
  *
  * @author ikeyleap
  * @version 1.0
- * @date 2021/11/15 14:34
- * @description KXTable is a customized JTable with row header and auto-resize feature.
  */
 @Setter
 @Getter

@@ -21,11 +21,7 @@ import lombok.Setter;
  *
  * @author ikey
  * @version 1.0
- * @date 2019-01-10
  *
- * @description KXBeanTable is a JComponent that displays a JTable with a
- *              RowHeaderTable to display row numbers. It also provides methods
- *              to add and delete rows from the table.
  */
 @Setter
 @Getter
