@@ -3,7 +3,7 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.ikeyleap.ctrl</groupId>
+    <groupId>io.github.qiuqiupeng</groupId>
     <artifactId>component</artifactId>
     <version>1.0.2</version>
     <packaging>jar</packaging>
@@ -13,7 +13,6 @@
         <name>ikeyleap</name>
         <url>https://www.ikeyleap.com</url>
     </organization>
-    <inceptionYear>2018</inceptionYear>
     <description>Component library for Java Swing</description>
     <url>https://github.com/ikeyleap/component</url>
 
@@ -125,7 +124,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-gpg-plugin</artifactId>
-				<version>3.2.4</version>
+				<version>3.2.1</version>
                 <executions>
                     <execution>
                         <id>sign-artifacts</id>
