@@ -1,167 +1,168 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-	<modelVersion>4.0.0</modelVersion>
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
 
-	<groupId>com.ikeyleap.ctrl</groupId>
-	<artifactId>component</artifactId>
-	<version>1.0.2</version>
-	<packaging>jar</packaging>
+    <groupId>com.ikeyleap.ctrl</groupId>
+    <artifactId>component</artifactId>
+    <version>1.0.2</version>
+    <packaging>jar</packaging>
 
-	<name>${project.groupId}:${project.artifactId}</name>
-	<organization>
-		<name>ikeyleap</name>
-		<url>https://www.ikeyleap.com</url>
-	</organization>
-	<inceptionYear>2018</inceptionYear>
-	<description>Component library for Java Swing</description>
-	<url>https://github.com/ikeyleap/component</url>
+    <name>${project.groupId}:${project.artifactId}</name>
+    <organization>
+        <name>ikeyleap</name>
+        <url>https://www.ikeyleap.com</url>
+    </organization>
+    <inceptionYear>2018</inceptionYear>
+    <description>Component library for Java Swing</description>
+    <url>https://github.com/ikeyleap/component</url>
 
-	<properties>
-		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<java.version>1.8</java.version>
-	</properties>
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <java.version>1.8</java.version>
+    </properties>
 
-	<licenses>
-		<license>
-			<name>The Apache License, Version 2.0</name>
-			<url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
-		</license>
-	</licenses>
+    <licenses>
+        <license>
+            <name>The Apache License, Version 2.0</name>
+            <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+        </license>
+    </licenses>
 
-	<developers>
-		<developer>
-			<name>ikeyleap</name>
-			<email>lipeng@ikeyleap.com</email>
-			<organization>Sonatype</organization>
-			<organizationUrl>http://www.sonatype.com</organizationUrl>
-		</developer>
-	</developers>
+    <developers>
+        <developer>
+            <name>ikeyleap</name>
+            <email>lipeng@ikeyleap.com</email>
+            <organization>Sonatype</organization>
+            <organizationUrl>http://www.sonatype.com</organizationUrl>
+        </developer>
+    </developers>
 
-	<scm>
-		<connection>scm:git:git://github.com/simpligility/ossrh-demo.git</connection>
-		<developerConnection>scm:git:ssh://github.com:simpligility/ossrh-demo.git</developerConnection>
-		<url>http://github.com/simpligility/ossrh-demo/tree/master</url>
-	</scm>
+    <scm>
+        <connection>scm:git:git://github.com/ikeyleap/component.git</connection>
+        <developerConnection>scm:git:ssh://github.com/ikeyleap/component.git</developerConnection>
+        <url>https://github.com/ikeyleap/component</url>
+    </scm>
 
-	<distributionManagement>
-		<snapshotRepository>
-			<id>ossrh</id>
-			<url>https://oss.sonatype.org/content/repositories/snapshots</url>
-		</snapshotRepository>
-		<repository>
-			<id>ossrh</id>
-			<url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
-		</repository>
-	</distributionManagement>
+    <distributionManagement>
+        <snapshotRepository>
+            <id>ossrh</id>
+            <url>https://oss.sonatype.org/content/repositories/snapshots</url>
+        </snapshotRepository>
+        <repository>
+            <id>ossrh</id>
+            <url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
+        </repository>
+    </distributionManagement>
 
-	<dependencies>
-		<dependency>
-			<groupId>junit</groupId>
-			<artifactId>junit</artifactId>
-			<version>3.8.1</version>
-			<scope>test</scope>
-		</dependency>
-		<!-- https://mvnrepository.com/artifact/org.jdesktop/beansbinding -->
-		<dependency>
-			<groupId>org.jdesktop</groupId>
-			<artifactId>beansbinding</artifactId>
-			<version>1.2.1</version>
-		</dependency>
-		<dependency>
-			<groupId>com.github.jiconfont</groupId>
-			<artifactId>jiconfont-swing</artifactId>
-			<version>1.0.1</version>
-		</dependency>
+    <dependencies>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>3.8.1</version>
+            <scope>test</scope>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/org.jdesktop/beansbinding -->
+        <dependency>
+            <groupId>org.jdesktop</groupId>
+            <artifactId>beansbinding</artifactId>
+            <version>1.2.1</version>
+        </dependency>
+        <dependency>
+            <groupId>com.github.jiconfont</groupId>
+            <artifactId>jiconfont-swing</artifactId>
+            <version>1.0.1</version>
+        </dependency>
 
-		<dependency>
-			<groupId>com.github.jiconfont</groupId>
-			<artifactId>jiconfont-bundle</artifactId>
-			<version>1.4.0</version>
-		</dependency>
-		<dependency>
-			<groupId>cn.hutool</groupId>
-			<artifactId>hutool-all</artifactId>
-			<version>5.8.25</version>
-		</dependency>
-		<!-- https://mvnrepository.com/artifact/com.glazedlists/glazedlists -->
-		<dependency>
-			<groupId>com.glazedlists</groupId>
-			<artifactId>glazedlists</artifactId>
-			<version>1.11.0</version>
-		</dependency>
-		<dependency>
-			<groupId>org.projectlombok</groupId>
-			<artifactId>lombok</artifactId>
-			<version>1.18.20</version>
-			<scope>provided</scope>
-		</dependency>
-	</dependencies>
-	<build>
-		<plugins>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-compiler-plugin</artifactId>
-				<configuration>
-					<source>8</source>
-					<target>8</target>
-				</configuration>
-			</plugin>
-			<!--    Maven插件发布    -->
-			<plugin>
-				<groupId>org.sonatype.central</groupId>
-				<artifactId>central-publishing-maven-plugin</artifactId>
-				<version>0.4.0</version>
-				<extensions>true</extensions>
-				<configuration>
-					<publishingServerId>central</publishingServerId>
-<!--					<tokenAuth>true</tokenAuth>-->
-					<autoPublish>false</autoPublish>
-				</configuration>
-			</plugin>
+        <dependency>
+            <groupId>com.github.jiconfont</groupId>
+            <artifactId>jiconfont-bundle</artifactId>
+            <version>1.4.0</version>
+        </dependency>
+        <dependency>
+            <groupId>cn.hutool</groupId>
+            <artifactId>hutool-all</artifactId>
+            <version>5.8.25</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/com.glazedlists/glazedlists -->
+        <dependency>
+            <groupId>com.glazedlists</groupId>
+            <artifactId>glazedlists</artifactId>
+            <version>1.11.0</version>
+        </dependency>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>1.18.20</version>
+            <scope>provided</scope>
+        </dependency>
+    </dependencies>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>8</source>
+                    <target>8</target>
+                </configuration>
+            </plugin>
+            <!--    Maven插件发布    -->
+            <plugin>
+                <groupId>org.sonatype.central</groupId>
+                <artifactId>central-publishing-maven-plugin</artifactId>
+                <version>0.4.0</version>
+                <extensions>true</extensions>
+                <configuration>
+                    <publishingServerId>central</publishingServerId>
+                    <tokenAuth>true</tokenAuth>
+                    <autoPublish>false</autoPublish>
+                </configuration>
+            </plugin>
 
 
-			<!--    签名插件        -->
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-gpg-plugin</artifactId>
-				<executions>
-					<execution>
-						<id>sign-artifacts</id>
-						<phase>verify</phase>
-						<goals>
-							<goal>sign</goal>
-						</goals>
-					</execution>
-				</executions>
-			</plugin>
+            <!--    签名插件        -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-gpg-plugin</artifactId>
+				<version>3.2.4</version>
+                <executions>
+                    <execution>
+                        <id>sign-artifacts</id>
+                        <phase>verify</phase>
+                        <goals>
+                            <goal>sign</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
 
-			<!--     生成源文件       -->
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-source-plugin</artifactId>
-				<executions>
-					<execution>
-						<id>attach-sources</id>
-						<goals>
-							<goal>jar-no-fork</goal>
-						</goals>
-					</execution>
-				</executions>
-			</plugin>
-			<!--     生成源javadocs文件       -->
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-javadoc-plugin</artifactId>
-				<executions>
-					<execution>
-						<id>attach-javadocs</id>
-						<goals>
-							<goal>jar</goal>
-						</goals>
-					</execution>
-				</executions>
-			</plugin>
-		</plugins>
-	</build>
+            <!--     生成源文件       -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-source-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>attach-sources</id>
+                        <goals>
+                            <goal>jar-no-fork</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <!--     生成源javadocs文件       -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-javadoc-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>attach-javadocs</id>
+                        <goals>
+                            <goal>jar</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
 </project>
